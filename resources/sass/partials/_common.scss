@@ -1,0 +1,49 @@
+//Clearfix
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+
+}
+//Decorazione sui link tolta
+a {
+       text-decoration: none;
+}
+//classe che fa un flex-center
+.flex-center {
+       height: 100%;
+       display: flex;
+       align-items: center;
+}
+//classe per centrare il testo
+.text-center {
+       text-align: center;
+}
+// Classi per menù in javascript
+.fixed + main {
+  padding-top: 57px !important;
+}
+
+.fixed- {
+     position: fixed;
+        top: -114px;;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      transition: all 1s ease;
+}
+
+.fixed {
+     position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      transition: all 1s ease;
+}
+
+.row2 {
+       padding-bottom: 20px;
+       border-bottom: 0.5px solid black;
+}
+//Fine classi per javascript
