@@ -1,0 +1,29 @@
+@media screen and (max-width: 1200px) {
+       .wl-nav {
+              display: none;
+       }
+       .wl-searchbar {
+              display: none;
+       }
+
+       .wl-header {
+              .wl-header-row {
+                     .wl-logo {
+                            .wl-logo-header {
+                                   .fa-bars {
+                                          display: block;
+                                          font-size: 1em;
+                                          margin-right: 20px;
+                                          cursor: pointer;
+                                   }
+                            }
+                            .flex-center {
+                                   flex-direction: row;
+                                   justify-content: space-between;
+                            }
+                     }
+
+              }
+
+       }
+}
