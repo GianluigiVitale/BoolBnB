@@ -15,6 +15,7 @@ class CreateSponsorshipsTable extends Migration
     {
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('package_id')->constrained();
             $table->foreignId('apartment_id')->constrained();
             $table->dateTime('sponsor_end', 0);
             $table->timestamps();
