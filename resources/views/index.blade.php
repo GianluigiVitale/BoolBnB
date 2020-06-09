@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('titolo')
-    HomePage | BoolBnB
+    HomePage | Watch/Lab
 @endsection
 @section('mainContent')
 
