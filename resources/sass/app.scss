@@ -1,4 +1,4 @@
-@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap';
 @import 'partials/_font';
 @import 'partials/_variables';
 @import 'partials/_mixin';
@@ -13,3 +13,9 @@
 /* FOOTER */
 @import 'partials/_footer';
 @import 'partials/_media';
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
