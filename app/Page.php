@@ -9,5 +9,5 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 class Page extends Model implements Viewable
 {
     use InteractsWithViews;
-
+ 
 }

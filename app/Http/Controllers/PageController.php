@@ -49,6 +49,7 @@ class PageController extends Controller
 
         // dd($page);
        views($page)->count();
+       views($page)->record();
 
        return view('page.show', compact('page'));
     }
