@@ -1,7 +1,11 @@
 @extends('layouts.layout')
 @section('titolo')
-    HomePassge | BoolBnB
+    HomePage | BoolBnB
 @endsection
+
+
+
+
 @section('body')
        @include('partials.header')
        @include('partials.main')

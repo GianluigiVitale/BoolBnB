@@ -37236,15 +37236,26 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+//REQUIRE
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // PLACES ALGOLIA
+
+var placesAutocomplete = places({
+  appId: 'plBZBOWH3DEC',
+  apiKey: '593f74e1b84067335abcb422c5d9d7bd',
+  container: document.querySelector('#address-input')
+});
+placesAutocomplete.on('change', function (e) {
+  return console.log([e.suggestion['latlng'].lat, e.suggestion['latlng'].lng]);
+}); //DATEPICKER
 
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");
 
 var picker = datepicker('.datepicker', {
   overlayPlaceholder: 'Inserisci anno di nascita'
-});
+}); //MENU SCROLLABILE
+
 $(window).scroll(function () {
   if ($(window).scrollTop() >= 57) {
     $('#myHeader').addClass('fixed-');
