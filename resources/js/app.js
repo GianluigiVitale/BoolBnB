@@ -1,10 +1,7 @@
 window.$ = require('jquery');
 const datepicker = require('js-datepicker');
-const picker = datepicker('.datepicker',  {
-  formatter: (input, date, instance) => {
-    const value = date.toLocaleDateString()
-   
-  }
+const picker = datepicker('.datepicker', {
+  overlayPlaceholder: 'Inserisci anno di nascita'
 })
 $(window).scroll(function(){
     if ($(window).scrollTop() >= 57) {

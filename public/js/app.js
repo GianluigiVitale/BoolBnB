@@ -10993,9 +10993,7 @@ window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");
 
 var picker = datepicker('.datepicker', {
-  formatter: function formatter(input, date, instance) {
-    var value = date.toLocaleDateString();
-  }
+  overlayPlaceholder: 'Inserisci anno di nascita'
 });
 $(window).scroll(function () {
   if ($(window).scrollTop() >= 57) {
