@@ -7,12 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('titolo')</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    @yield('bootstrap')
+    @yield('styles')
 </head>
 <body>
-@include('partials.header')
-@include('partials.main')
-@include('partials.footer')
+@yield('body')
 </body>
 @yield('script')
 {{-- scripts --}}
