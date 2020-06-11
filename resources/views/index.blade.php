@@ -1,11 +1,9 @@
 @extends('layouts.layout')
 @section('titolo')
-    HomePassge | BoolBnB
+    HomePage | BoolBnB
 @endsection
-@section('body')
-       @include('partials.header')
-       @include('partials.main')
-       @include('partials.footer')
+@section('mainContent')
+
 @endsection
 @section('script')
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
