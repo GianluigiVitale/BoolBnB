@@ -21,6 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//rotte dell'admin
+Route::prefix('owner')
+->name('owner.')
+->namespace('Owner')
+->middleware('auth')
+->group(function(){
+    Route::get('/', 'UserController@index')->name('index');
+    Route::resource('apartment', 'ApartmentController');
+});
