@@ -1,3 +1,4 @@
+require('./bootstrap');
 window.$ = require('jquery');
 const datepicker = require('js-datepicker');
 const picker = datepicker('.datepicker', {
