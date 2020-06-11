@@ -2,8 +2,10 @@
 @section('titolo')
     HomePage | BoolBnB
 @endsection
-@section('mainContent')
-
+@section('body')
+       @include('partials.header')
+       @include('partials.main')
+       @include('partials.footer')
 @endsection
 @section('script')
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>

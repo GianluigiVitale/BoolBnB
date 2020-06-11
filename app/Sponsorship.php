@@ -9,7 +9,7 @@ class Sponsorship extends Model
     protected $fillable = [
         'apartment_id',
         'package_id',
-        'sponsor_end',
+        'sponsor_end'
     ];
 
     public function packages()
