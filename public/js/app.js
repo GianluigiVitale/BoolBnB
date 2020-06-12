@@ -37245,9 +37245,13 @@ var placesAutocomplete = places({
   appId: 'plBZBOWH3DEC',
   apiKey: '593f74e1b84067335abcb422c5d9d7bd',
   container: document.querySelector('#address-input')
+}); // var coordinates = placesAutocomplete.on('change', e => console.log([e.suggestion['latlng'].lat,e.suggestion['latlng'].lng]));
+
+placesAutocomplete.on('change', function (e) {
+  return $('#latitude').val(e.suggestion['latlng'].lat);
 });
 placesAutocomplete.on('change', function (e) {
-  return console.log([e.suggestion['latlng'].lat, e.suggestion['latlng'].lng]);
+  return $('#longitude').val(e.suggestion['latlng'].lng);
 }); //DATEPICKER
 
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");
@@ -37335,8 +37339,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
