@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Service;
 
 
 class ApartmentController extends Controller
@@ -16,7 +17,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -26,7 +27,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-
+       $services = Service::all();
+       return view('owner.apartment.create', compact('services'));
     }
 
     /**

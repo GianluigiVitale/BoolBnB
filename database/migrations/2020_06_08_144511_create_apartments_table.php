@@ -21,6 +21,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('number_beds');
             $table->integer('number_bathrooms');
             $table->integer('sqmt');
+            $table->boolean('published');
             $table->float('latitude', 10, 6);
             $table->float('longitude', 10, 6);
             $table->string('image', 100);
