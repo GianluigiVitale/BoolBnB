@@ -13,6 +13,7 @@ class Apartment extends Model
         'number_beds',
         'number_bathrooms',
         'sqmt',
+        'published',
         'latitude',
         'longitude',
         'image'
