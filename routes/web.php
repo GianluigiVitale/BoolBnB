@@ -28,5 +28,5 @@ Route::prefix('owner')
 ->middleware('auth')
 ->group(function(){
     Route::get('/', 'UserController@index')->name('index');
-    Route::resource('apartment', 'ApartmentController');
+    Route::resource('apartments', 'ApartmentController');
 });
