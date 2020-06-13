@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <form class="" action="{{route('owner.apartments.store')}}" method="post">
+                <form class="" action="{{route('owner.apartments.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="form-group">
@@ -21,15 +21,6 @@
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
-
-
-
-                    {{-- <script type="text/javascript">
-                        // console.log('ciao');
-                        console.log([e.suggestion['latlng'].lat,e.suggestion['latlng'].lng]);
-                    </script> --}}
-
-
 
                     <div class="form-group">
                         <label for="number_rooms">Number of rooms</label>
@@ -82,21 +73,25 @@
                         <input type="radio" id="published" name="published" value="1" {{(old('published') == 1) ? 'checked' : ''}}>
                         <label for="not-pub">Not Published</label>
                         <input type="radio" id="not-published" name="published" value="0" {{(old('published') == 0) ? 'checked' : ''}}>
-
                     </div>
 
-                    {{-- <div class="form-group">
-                        <h4>Photos</h4>
-                        @foreach ($photos as $photo)
-                        <label for="photos">{{$photo->name}}</label>
-                        <input type="checkbox" name="photos[]" value="{{$photo->id}}" {{(is_array(old('photos')) && in_array($photo->id, old('photos'))) ? 'checked' : ''}}>
-                        @endforeach
-                    </div>
-                    @error('photos')
+                    {{-- <form action="/upload" method="post" enctype="multipart/form-data"> --}}
+                        {{-- @csrf --}}
+                        <div class="form-group">
+                            <label for="sqmt">Image</label>
+                            <input type="file" name="image" class="form-control" value="{{old('image')}}">
+                        </div>
+                    {{-- </form> --}}
+                    @error('image')
                     <div class="alert alert-danger">{{$message}}</div>
-                    @enderror --}}
+                    @enderror
+
                     <input type="submit" value="Salva" class="btn btn-primary">
                 </form>
+
+
+
+
             </div>
         </div>
     </div>

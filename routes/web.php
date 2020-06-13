@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,13 @@ Route::prefix('owner')
     Route::get('/', 'UserController@index')->name('index');
     Route::resource('apartments', 'ApartmentController');
 });
+
+Route::post('/upload', function (Request $request) {
+    $request->image->store('images');
+    // dd($request->hasFile('image'));
+    return 'uploaded';
+});
+
+
+
+//
