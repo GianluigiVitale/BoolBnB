@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
@@ -17,7 +19,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-
+        
     }
 
     /**
@@ -41,7 +43,37 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         $data['image'] = $request->image->store('images');
-        dd($data);
+
+        $validator = Validator::make($data, [
+            'title' => 'required|string|max:50',
+            'number_rooms' => 'required|integer|min:1',
+            'number_beds' => 'required|integer|min:1',
+            'number_bathrooms' => 'required|integer|min:1',
+            'sqmt' => 'required|integer|min:1',
+            'published' => 'required|boolean',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'image' => 'required',
+            'services.*' => 'exists:services,id'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('owner.apartments.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        $apartment = new Apartment;
+        $data['user_id'] = Auth::id();
+        $apartment->fill($data);
+
+        $saved = $apartment->save();
+        if (!$saved) {
+            abort('404');
+        }
+
+        $apartment->services()->attach($data['services']);
+        // dd($apartment);
+        return view('welcome');
     }
 
     /**

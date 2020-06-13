@@ -21,6 +21,9 @@
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
+                    @error('latitude')
+                    <div class="alert alert-danger">Invalid address</div>
+                    @enderror
 
                     <div class="form-group">
                         <label for="number_rooms">Number of rooms</label>
