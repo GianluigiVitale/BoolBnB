@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
@@ -19,7 +20,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        
+        $apartments = Apartment::all();
+
+        return view('owner.apartments.index', compact('apartments'));
     }
 
     /**
@@ -42,7 +45,9 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['image'] = $request->image->store('images');
+        //$data['image'] = $request->image->store('images');
+
+        $data['image'] = Storage::disk('public')->put('images', $data['image']);
 
         $validator = Validator::make($data, [
             'title' => 'required|string|max:50',
@@ -84,7 +89,9 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+
+        return view('owner.apartments.show', compact('apartment'));
     }
 
     /**
