@@ -40,6 +40,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['image'] = $request->image->store('images');
         dd($data);
     }
 
