@@ -1,5 +1,7 @@
 # BoolBnB
 
+Realization of a complex Web application inspired by Airbnb, formed by Backend (Multi-auth Users and Roles, Payment Provider Integration and Geolocation API) and responsive Frontend interface.
+
 ## Project Link
 
 https://docs.google.com/document/d/1e-d1SooTchMUuL8FEYiv51h47b56uHwEs68NH1EeIEc
