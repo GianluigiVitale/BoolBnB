@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
@@ -19,7 +20,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        
+        $apartments = Apartment::all();
+
+        return view('owner.apartments.index', compact('apartments'));
     }
 
     /**
@@ -43,6 +46,8 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         $data['image'] = $request->image->store('images');
+
+        // $data['image'] = Storage::disk('public')->put('images', $data['image']);
 
         $validator = Validator::make($data, [
             'title' => 'required|string|max:50',
@@ -73,7 +78,9 @@ class ApartmentController extends Controller
 
         $apartment->services()->attach($data['services']);
         // dd($apartment);
-        return view('welcome');
+        // return view('welcome');
+
+        return redirect()->route('owner.apartments.show', $apartment->id);
     }
 
     /**
@@ -84,7 +91,9 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+
+        return view('owner.apartments.show', compact('apartment'));
     }
 
     /**
@@ -95,7 +104,10 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $services = Service::all();
+
+        return view('owner.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -107,7 +119,51 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $apartment = Apartment::findOrFail($id);
+        $userId = Auth::id();
+        $author = $apartment->user_id;
+
+        if ($userId != $author) {
+            abort('404');
+        }
+
+        $data['image'] = $request->image->store('images');
+
+        // $data['image'] = Storage::disk('public')->put('images', $data['image']);
+
+        $validator = Validator::make($data, [
+            'title' => 'required|string|max:50',
+            'number_rooms' => 'required|integer|min:1',
+            'number_beds' => 'required|integer|min:1',
+            'number_bathrooms' => 'required|integer|min:1',
+            'sqmt' => 'required|integer|min:1',
+            'published' => 'required|boolean',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'image' => 'required',
+            'services.*' => 'exists:services,id'
+        ]);
+
+        if ($validator->fails() || empty($data['services'])) {
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+
+        $apartment->fill($data);
+
+        $updated = $apartment->update();
+        if (!$updated) {
+            return redirect()->back();
+        }
+
+        $apartment->services()->sync($data['services']);
+        // dd($apartment);
+        // return view('welcome');
+
+        return redirect()->route('owner.apartments.show', $apartment->id);
     }
 
     /**
