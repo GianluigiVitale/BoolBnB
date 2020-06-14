@@ -20,7 +20,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $userId = Auth::id();
+        $apartments = Apartment::where('user_id', $userId)->get();
 
         return view('owner.apartments.index', compact('apartments'));
     }
@@ -45,9 +46,9 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['image'] = $request->image->store('images');
+        //$data['image'] = $request->image->store('images');
 
-        // $data['image'] = Storage::disk('public')->put('images', $data['image']);
+        $data['image'] = Storage::disk('public')->put('images', $data['image']);
 
         $validator = Validator::make($data, [
             'title' => 'required|string|max:50',
@@ -128,9 +129,9 @@ class ApartmentController extends Controller
             abort('404');
         }
 
-        $data['image'] = $request->image->store('images');
+        //$data['image'] = $request->image->store('images');
 
-        // $data['image'] = Storage::disk('public')->put('images', $data['image']);
+        $data['image'] = Storage::disk('public')->put('images', $data['image']);
 
         $validator = Validator::make($data, [
             'title' => 'required|string|max:50',
@@ -174,6 +175,17 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $userId = Auth::id();
+        $apartment = Apartment::findOrFail($id);
+        if ($userId != $apartment->user_id) {
+            abort('404');
+        }
+
+        //se abbiamo many to many dobbiamo cancellare record in tabella ponte
+        $apartment->services()->detach();
+        $apartment->delete();
+
+        return redirect()->back();
     }
 }
