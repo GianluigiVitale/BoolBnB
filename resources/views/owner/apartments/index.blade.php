@@ -36,8 +36,14 @@
                                <td>{{$apartment->created_at}}</td>
                                <td>{{$apartment->updated_at}}</td>
                                <td><a class="btn btn-primary" href="{{route('owner.apartments.show', $apartment->id)}}">View</a></td>
-                               <td><a class="btn btn-primary" href="">Modify</a></td>
-                               <td><a class="btn btn-primary" href="">Delete</a></td>
+                               <td><a class="btn btn-primary" href="{{route('owner.apartments.edit', $apartment->id)}}">Modify</a></td>
+                               <td>
+                                <form action="{{route('owner.apartments.destroy', $apartment->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                  </form>
+                                </td>
                            </tr> 
                         @endforeach
                     </tbody>

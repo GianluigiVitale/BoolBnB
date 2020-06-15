@@ -32,11 +32,11 @@ Route::prefix('owner')
     Route::resource('apartments', 'ApartmentController');
 });
 
-Route::post('/upload', function (Request $request) {
-    $request->image->store('images');
-    // dd($request->hasFile('image'));
-    return 'uploaded';
-});
+// Route::post('/upload', function (Request $request) {
+//     $request->image->store('images');
+//     // dd($request->hasFile('image'));
+//     return 'uploaded';
+// });
 
 
 

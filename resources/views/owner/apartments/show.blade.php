@@ -25,7 +25,7 @@
       @endif
 
 
-        <img class="img-fluid" src="{{asset('storage/app/'. $apartment->image)}}" alt="{{$apartment->title}}">
+        <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
 
 
     </div>
