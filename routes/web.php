@@ -14,14 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 //rotte dell'admin
 Route::prefix('owner')
 ->name('owner.')
@@ -32,12 +25,24 @@ Route::prefix('owner')
     Route::resource('apartments', 'ApartmentController');
 });
 
+// Rotta d'entrata in cui ricercare un appartamento
+Route::get('/', 'ApartmentController@indexPublished')->name('welcome');
+Route::get('/{id}', 'ApartmentController@show')->name('apartment');
+
+// Dashboard
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 // Route::post('/upload', function (Request $request) {
 //     $request->image->store('images');
 //     // dd($request->hasFile('image'));
 //     return 'uploaded';
 // });
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 //
