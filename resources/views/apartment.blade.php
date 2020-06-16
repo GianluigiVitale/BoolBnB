@@ -1,6 +1,3 @@
-<h1>QUESTO è IL SINGOLO APPARTAMENTO</h1>
-
-
 @extends('layouts.layout')
 @section('titolo')
     HomePage | BoolBnB
@@ -21,9 +18,9 @@
               @endforeach
               </ul>
             </div>
-            <h4>Number of rooms: {{$apartment->numer_rooms}}</h4>
-            <h4>Number of beds: {{$apartment->numer_beds}}</h4>
-            <h4>Number of bathrooms: {{$apartment->numer_bathrooms}}</h4>
+            <h4>Number of rooms: {{$apartment->number_rooms}}</h4>
+            <h4>Number of beds: {{$apartment->number_beds}}</h4>
+            <h4>Number of bathrooms: {{$apartment->number_bathrooms}}</h4>
             <h4>Sqmt: {{$apartment->sqmt}}</h4>
         @endif
         @if ($apartment->published == 0)
