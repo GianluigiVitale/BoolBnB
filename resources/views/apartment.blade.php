@@ -7,7 +7,6 @@
        @include('partials.header')
 
         @if ($apartment->published == 1)
-            <h2>Qui va stampato tutto l'appartamento, così che possa essere visibile agli utenti non registrati!!</h2>
             <h1>Title: {{$apartment->title}}</h1>
             <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
             <div>

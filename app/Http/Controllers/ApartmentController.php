@@ -55,8 +55,18 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view('apartment', compact('apartment'));
+        if ($apartment->published == 0) {
+            abort('404');
+        } else {
+            return view('apartment', compact('apartment'));
+        }
     }
+
+    // public function showPublished($id)
+    // {
+    //     $apartments = Apartment::where('published', 1)->get();
+    //     return view('apartment', compact('apartments'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
