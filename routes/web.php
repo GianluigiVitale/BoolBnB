@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 //rotte dell'admin
+// Dashboard
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('owner')
 ->name('owner.')
 ->namespace('Owner')
@@ -29,8 +32,7 @@ Route::prefix('owner')
 Route::get('/', 'ApartmentController@indexPublished')->name('welcome');
 Route::get('/{id}', 'ApartmentController@show')->name('apartment');
 
-// Dashboard
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 
