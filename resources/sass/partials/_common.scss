@@ -5,6 +5,12 @@
     clear: both;
 
 }
+
+.bb-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 //Decorazione sui link tolta
 a {
        text-decoration: none;
