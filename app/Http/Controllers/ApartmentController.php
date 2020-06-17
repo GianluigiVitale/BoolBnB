@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -21,7 +22,8 @@ class ApartmentController extends Controller
     public function indexPublished()
     {
         $apartments = Apartment::where('published', 1)->get();
-        return view('welcome', compact('apartments'));
+        $services = Service::all();
+        return view('welcome', compact('apartments', 'services'));
     }
 
 

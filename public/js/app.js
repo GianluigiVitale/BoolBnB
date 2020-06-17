@@ -37261,13 +37261,33 @@ placesAutocomplete.on('change', function (e) {
     'success': function success(data) {
       //console.log(data);
       for (var key in data) {
-        //console.log(data[key]['latitude']);
+        console.log(data[key].services); //console.log(data[key]['latitude']);
+
         var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'], 'K');
         console.log(dist);
-      } //var dist = distance(tempLat, tempLong,)
+      } //   $(".form-check-input").click(function(){
+      //     var favorite = [];
+      //     $.each($("input[type='checkbox']:checked"), function(){
+      //         favorite.push($(this).val());
+      //     });
+      //     alert("My favourite sports are: " + favorite.join(", "));
+      // });
 
     }
   });
+});
+$.ajax({
+  'url': '/api/apartments',
+  'method': 'GET',
+  'success': function success(data) {
+    //console.log(data);
+    $(".form-check-input").click(function () {
+      var favorite = [];
+      $.each($("input[type='checkbox']:checked"), function () {
+        favorite.push($(this).val());
+      }); //alert("My favourite sports are: " + favorite.join(", "));
+    });
+  }
 }); //console.log($('#longitude').val());
 // lat1, lon1 == search
 

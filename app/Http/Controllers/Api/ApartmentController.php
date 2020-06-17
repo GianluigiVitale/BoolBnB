@@ -10,6 +10,9 @@ class ApartmentController extends Controller
 {
     public function getAll() {
         $apartments = Apartment::all();
+        // $services = $apartments[0]->services();
+
+        // dd($services);
 
         return response()->json($apartments);
     }

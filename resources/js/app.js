@@ -27,12 +27,19 @@ var placesAutocomplete = places({
       //console.log(data);
 
       for (const key in data) {
+        console.log(data[key].services);
+        
         //console.log(data[key]['latitude']);
         var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
         console.log(dist);
       }
-
-      //var dist = distance(tempLat, tempLong,)
+    //   $(".form-check-input").click(function(){
+    //     var favorite = [];
+    //     $.each($("input[type='checkbox']:checked"), function(){
+    //         favorite.push($(this).val());
+    //     });
+    //     alert("My favourite sports are: " + favorite.join(", "));
+    // });
       
     }
   });
@@ -40,6 +47,21 @@ var placesAutocomplete = places({
   
   
  }); 
+
+ $.ajax({
+  'url': '/api/apartments',
+  'method': 'GET',
+  'success': function(data) {
+    //console.log(data);
+    $(".form-check-input").click(function(){
+      var favorite = [];
+      $.each($("input[type='checkbox']:checked"), function(){
+          favorite.push($(this).val());
+      });
+      //alert("My favourite sports are: " + favorite.join(", "));
+  });
+  }
+});
 
 //console.log($('#longitude').val());
 

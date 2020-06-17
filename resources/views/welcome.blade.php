@@ -15,6 +15,9 @@
                                 <p class="card-text">Descrizione appartamento {{$apartment->id}}</p>
                             </div>
                         </div>
+                        @php
+                           //dd($apartment->services) 
+                        @endphp
                    @endforeach
            </div>
        </div>
