@@ -18,54 +18,57 @@ var placesAutocomplete = places({
   var tempLong = e.suggestion['latlng'].lng;
   var tempLat = e.suggestion['latlng'].lat;
 
-  console.log(tempLong, tempLat);
+  // console.log(tempLong, tempLat);
 
   $.ajax({
     'url': '/api/apartments',
     'method': 'GET',
     'success': function(data) {
-      //console.log(data);
 
-      for (const key in data) {
-        console.log(data[key].services);
-        
-        //console.log(data[key]['latitude']);
-        var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
-        console.log(dist);
-      }
-    //   $(".form-check-input").click(function(){
-    //     var favorite = [];
-    //     $.each($("input[type='checkbox']:checked"), function(){
-    //         favorite.push($(this).val());
-    //     });
-    //     alert("My favourite sports are: " + favorite.join(", "));
-    // });
-      
+      // for (const key in data) {
+      //   var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
+      //   console.log(data[key]);
+        // showRadius(dist, 50);
+      // }
+      console.log(data);
+      $('.apartment-card').each(function(){
+          var lat = $(this).find('.latitude').text();
+          var long = $(this).find('.longitude').text();
+          // console.log(lat);
+          var dist = distance(tempLat, tempLong, lat, long,'K');
+          var radius = 40;
+          if (dist > radius) {
+            $(this).hide();
+          }
+      });
     }
   });
-  
-  
-  
- }); 
 
- $.ajax({
-  'url': '/api/apartments',
-  'method': 'GET',
-  'success': function(data) {
-    //console.log(data);
-    $(".form-check-input").click(function(){
-      var favorite = [];
-      $.each($("input[type='checkbox']:checked"), function(){
-          favorite.push($(this).val());
-      });
-      //alert("My favourite sports are: " + favorite.join(", "));
-  });
-  }
 });
 
-//console.log($('#longitude').val());
+$('.form-check-input').click(function(){
+    var selectedService = $(this).val();
+    $.ajax({
+        'url': '/api/apartments',
+        'method': 'GET',
+        'success': function(data) {
+            // console.log(data);
+            $('.apartment-card').each(function(){
+                var idApt = $(this).find('.id').text();
+                var serviceCheck = false;
+                for (var key in data) {
+                    if (data[key].apartment_id == idApt && data[key].service_id == selectedService) {
+                        serviceCheck = true;
+                    }
+                }
+                if (!serviceCheck) {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+});
 
-// lat1, lon1 == search
 function distance(lat1, lon1, lat2, lon2, unit) {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
 		return 0;
@@ -86,7 +89,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 		if (unit=="N") { dist = dist * 0.8684 }
 		return dist;
 	}
-} 
+};
 
 
 

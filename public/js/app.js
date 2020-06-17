@@ -37253,43 +37253,58 @@ placesAutocomplete.on('change', function (e) {
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
   var tempLong = e.suggestion['latlng'].lng;
-  var tempLat = e.suggestion['latlng'].lat;
-  console.log(tempLong, tempLat);
+  var tempLat = e.suggestion['latlng'].lat; // console.log(tempLong, tempLat);
+
   $.ajax({
     'url': '/api/apartments',
     'method': 'GET',
     'success': function success(data) {
-      //console.log(data);
-      for (var key in data) {
-        console.log(data[key].services); //console.log(data[key]['latitude']);
+      // for (const key in data) {
+      //   var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
+      //   console.log(data[key]);
+      // showRadius(dist, 50);
+      // }
+      console.log(data);
+      $('.apartment-card').each(function () {
+        var lat = $(this).find('.latitude').text();
 
-        var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'], 'K');
-        console.log(dist);
-      } //   $(".form-check-input").click(function(){
-      //     var favorite = [];
-      //     $.each($("input[type='checkbox']:checked"), function(){
-      //         favorite.push($(this).val());
-      //     });
-      //     alert("My favourite sports are: " + favorite.join(", "));
-      // });
+        var _long = $(this).find('.longitude').text(); // console.log(lat);
 
+
+        var dist = distance(tempLat, tempLong, lat, _long, 'K');
+        var radius = 40;
+
+        if (dist > radius) {
+          $(this).hide();
+        }
+      });
     }
   });
 });
-$.ajax({
-  'url': '/api/apartments',
-  'method': 'GET',
-  'success': function success(data) {
-    //console.log(data);
-    $(".form-check-input").click(function () {
-      var favorite = [];
-      $.each($("input[type='checkbox']:checked"), function () {
-        favorite.push($(this).val());
-      }); //alert("My favourite sports are: " + favorite.join(", "));
-    });
-  }
-}); //console.log($('#longitude').val());
-// lat1, lon1 == search
+$('.form-check-input').click(function () {
+  var selectedService = $(this).val();
+  $.ajax({
+    'url': '/api/apartments',
+    'method': 'GET',
+    'success': function success(data) {
+      // console.log(data);
+      $('.apartment-card').each(function () {
+        var idApt = $(this).find('.id').text();
+        var serviceCheck = false;
+
+        for (var key in data) {
+          if (data[key].apartment_id == idApt && data[key].service_id == selectedService) {
+            serviceCheck = true;
+          }
+        }
+
+        if (!serviceCheck) {
+          $(this).hide();
+        }
+      });
+    }
+  });
+});
 
 function distance(lat1, lon1, lat2, lon2, unit) {
   if (lat1 == lat2 && lon1 == lon2) {
@@ -37319,8 +37334,9 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 
     return dist;
   }
-} //DATEPICKER
+}
 
+; //DATEPICKER
 
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");
 
@@ -37407,8 +37423,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

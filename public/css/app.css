@@ -11333,6 +11333,10 @@ a {
   border-bottom: 0.5px solid black;
 }
 
+.invisible {
+  display: none;
+}
+
 /* HEADER */
 
 .wl-header {

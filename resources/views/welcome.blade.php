@@ -8,16 +8,16 @@
        <div class="container">
            <div class="row">
                    @foreach ($apartments as $apartment)
-                       <div class="card" style="width: 18rem;">
+                       <div class="card apartment-card" style="width: 18rem;">
                             <img class="card-img-top" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
                             <div class="card-body">
                                 <h5 class="card-title">Appartamento {{$apartment->title}}</h5>
                                 <p class="card-text">Descrizione appartamento {{$apartment->id}}</p>
+                                <p class="latitude invisible">{{$apartment->latitude}}</p>
+                                <p class="longitude invisible">{{$apartment->longitude}}</p>
+                                <p class="id invisible">{{$apartment->id}}</p>
                             </div>
                         </div>
-                        @php
-                           //dd($apartment->services) 
-                        @endphp
                    @endforeach
            </div>
        </div>
