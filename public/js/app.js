@@ -37251,6 +37251,10 @@ var placesAutocomplete = places({
 
 placesAutocomplete.on('change', function (e) {
   var radius = $('#radius').val();
+  var numRooms = $('#number_rooms').val();
+  var numBeds = $('#number_beds').val(); // console.log(numRooms);
+  // console.log(numBeds);
+
   $('.apartment-card').removeClass('invisible');
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
@@ -37265,6 +37269,14 @@ placesAutocomplete.on('change', function (e) {
     var dist = distance(tempLat, tempLong, lat, _long, 'K');
 
     if (dist > radius) {
+      $(this).addClass('invisible');
+    }
+
+    if ($(this).find('.number_rooms').text() < numRooms) {
+      $(this).addClass('invisible');
+    }
+
+    if ($(this).find('.number_beds').text() < numBeds) {
       $(this).addClass('invisible');
     }
   });
