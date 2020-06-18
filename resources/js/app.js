@@ -59,11 +59,11 @@ $('.form-check-input').click(function() {
                                 }
                             }
                             if (!serviceCheck) {
-                                console.log('hide');
+                                // console.log('hide');
                                 aptCard.hide();
                             }
                         } else {
-                            console.log('show');
+                            // console.log('show');
                             aptCard.show();
                         }
                     }
