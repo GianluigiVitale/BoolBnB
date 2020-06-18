@@ -25,6 +25,7 @@
         @if ($apartment->published == 0)
             <h1>Questo appartamento non è stato pubblicato</h1>
         @endif
+            <iframe  width="100%" height="500" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
 
        @include('partials.footer')
 
