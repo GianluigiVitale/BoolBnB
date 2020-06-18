@@ -37250,6 +37250,7 @@ var placesAutocomplete = places({
 // placesAutocomplete.on('change', e => $('#longitude').val(e.suggestion['latlng'].lng));
 
 placesAutocomplete.on('change', function (e) {
+  var radius = $('#radius').val();
   $('.apartment-card').removeClass('invisible');
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
@@ -37262,7 +37263,6 @@ placesAutocomplete.on('change', function (e) {
 
 
     var dist = distance(tempLat, tempLong, lat, _long, 'K');
-    var radius = 40;
 
     if (dist > radius) {
       $(this).addClass('invisible');
@@ -37425,8 +37425,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

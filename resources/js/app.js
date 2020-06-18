@@ -11,7 +11,11 @@ var placesAutocomplete = places({
 // placesAutocomplete.on('change', e => $('#latitude').val(e.suggestion['latlng'].lat));
 // placesAutocomplete.on('change', e => $('#longitude').val(e.suggestion['latlng'].lng));
 
+
+
 placesAutocomplete.on('change', function(e) {
+    var radius = $('#radius').val();
+
     $('.apartment-card').removeClass('invisible');
 
     $('#longitude').val(e.suggestion['latlng'].lng);
@@ -26,7 +30,6 @@ placesAutocomplete.on('change', function(e) {
         var long = $(this).find('.longitude').text();
         // console.log(lat);
         var dist = distance(tempLat, tempLong, lat, long,'K');
-        var radius = 40;
         if (dist > radius) {
             $(this).addClass('invisible');
         }
