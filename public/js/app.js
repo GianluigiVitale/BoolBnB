@@ -37281,26 +37281,58 @@ placesAutocomplete.on('change', function (e) {
     }
   });
 });
-$('.form-check-input').click(function () {
-  var selectedService = $(this).val();
+$('.form-check-input').on('click', function () {
+  var selectedService = $(this).val(); //console.log(selectedService);
+
+  var checkBoxArray = $('.form-check-input:checked').map(function () {
+    return $(this).val();
+  }).get();
+  console.log(checkBoxArray);
   $.ajax({
     'url': '/api/apartments',
     'method': 'GET',
     'success': function success(data) {
-      // console.log(data);
+      //console.log(data);
+      var apiData = data;
+      var dataObj = {};
+
+      for (var key in apiData) {
+        console.log('key is: ' + apiData[key].apartment_id);
+        console.log(apiData[key]);
+        var aptID = apiData[key].apartment_id;
+
+        if (dataObj[aptID] === undefined) {
+          dataObj[aptID] = 0;
+        }
+      }
+
+      console.log(dataObj);
       $('.apartment-card').each(function () {
-        var idApt = $(this).find('.id').text();
-        var serviceCheck = false;
+        var idApt = $(this).find('.id').text(); //var serviceCheck = false;
 
         for (var key in data) {
-          if (data[key].apartment_id == idApt && data[key].service_id == selectedService) {
-            serviceCheck = true;
-          }
-        }
+          //console.log('apartment id: ' + data[key].apartment_id);
+          //console.log('service id: ' + data[key].service_id);
+          //console.log('selected service: ' + selectedService);
+          //if (data[key].apartment_id == idApt && data[key].service_id == selectedService) {
+          if (data[key].apartment_id == idApt && checkBoxArray.indexOf(data[key.service_id])) {
+            //serviceCheck = true;
+            //console.log('showing apt');
+            //console.log('apartment id: ' + data[key].apartment_id);
+            //console.log('service id: ' + data[key].service_id);
+            $(this).show();
+          } // else {
+          //   console.log('hiding apt');
+          //   $(this).hide();
+          // }
 
-        if (!serviceCheck) {
-          $(this).hide();
-        }
+        } // if (!serviceCheck) {
+        //     $(this).hide();
+        // }
+        // else {
+        //   $(this).show();
+        // }
+
       });
     }
   });
@@ -37423,8 +37455,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
