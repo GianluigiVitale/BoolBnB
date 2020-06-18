@@ -21,12 +21,8 @@ $('.form-check-input').click(function() {
                                 }
                             }
                             if (serviceCheck == false) {
-                                console.log('hide');
                                 aptCard.hide();
                             }
-                        } else {
-                            console.log('show');
-                            // aptCard.show();
                         }
                     }
                 });

@@ -37251,10 +37251,8 @@ var placesAutocomplete = places({
 
 placesAutocomplete.on('change', function (e) {
   var radius = $('#radius').val();
-  var numRooms = $('#number_rooms').val();
-  var numBeds = $('#number_beds').val(); // console.log(numRooms);
-  // console.log(numBeds);
-
+  var numRooms = parseInt($('#number_rooms').val());
+  var numBeds = parseInt($('#number_beds').val());
   $('.apartment-card').removeClass('invisible');
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
@@ -37263,8 +37261,7 @@ placesAutocomplete.on('change', function (e) {
   $('.apartment-card').each(function () {
     var lat = $(this).find('.latitude').text();
 
-    var _long = $(this).find('.longitude').text(); // console.log(lat);
-
+    var _long = $(this).find('.longitude').text();
 
     var dist = distance(tempLat, tempLong, lat, _long, 'K');
 
@@ -37272,11 +37269,14 @@ placesAutocomplete.on('change', function (e) {
       $(this).addClass('invisible');
     }
 
-    if ($(this).find('.number_rooms').text() < numRooms) {
+    var aptRooms = parseInt($(this).find('.number_rooms').text());
+    var aptBeds = parseInt($(this).find('.number_beds').text());
+
+    if (aptRooms <= numRooms) {
       $(this).addClass('invisible');
     }
 
-    if ($(this).find('.number_beds').text() < numBeds) {
+    if (aptBeds <= numBeds) {
       $(this).addClass('invisible');
     }
   });

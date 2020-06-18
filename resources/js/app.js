@@ -15,10 +15,9 @@ var placesAutocomplete = places({
 
 placesAutocomplete.on('change', function(e) {
     var radius = $('#radius').val();
-    var numRooms = $('#number_rooms').val();
-    var numBeds = $('#number_beds').val();
-    // console.log(numRooms);
-    // console.log(numBeds);
+    var numRooms = parseInt($('#number_rooms').val());
+    var numBeds = parseInt($('#number_beds').val());
+
 
     $('.apartment-card').removeClass('invisible');
 
@@ -32,16 +31,19 @@ placesAutocomplete.on('change', function(e) {
     $('.apartment-card').each(function() {
         var lat = $(this).find('.latitude').text();
         var long = $(this).find('.longitude').text();
-        // console.log(lat);
+
         var dist = distance(tempLat, tempLong, lat, long,'K');
         if (dist > radius) {
             $(this).addClass('invisible');
         }
 
-        if ($(this).find('.number_rooms').text() < numRooms) {
+        var aptRooms = parseInt($(this).find('.number_rooms').text());
+        var aptBeds = parseInt($(this).find('.number_beds').text());
+
+        if (aptRooms <= numRooms) {
             $(this).addClass('invisible');
         }
-        if ($(this).find('.number_beds').text() < numBeds) {
+        if (aptBeds <= numBeds) {
             $(this).addClass('invisible');
         }
     });
