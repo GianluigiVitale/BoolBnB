@@ -11,39 +11,26 @@ var placesAutocomplete = places({
 // placesAutocomplete.on('change', e => $('#latitude').val(e.suggestion['latlng'].lat));
 // placesAutocomplete.on('change', e => $('#longitude').val(e.suggestion['latlng'].lng));
 
- placesAutocomplete.on('change', function(e) {
-  $('#longitude').val(e.suggestion['latlng'].lng);
-  $('#latitude').val(e.suggestion['latlng'].lat);
+placesAutocomplete.on('change', function(e) {
+    $('.apartment-card').show();
 
-  var tempLong = e.suggestion['latlng'].lng;
-  var tempLat = e.suggestion['latlng'].lat;
+    $('#longitude').val(e.suggestion['latlng'].lng);
+    $('#latitude').val(e.suggestion['latlng'].lat);
 
-  // console.log(tempLong, tempLat);
+    var tempLong = e.suggestion['latlng'].lng;
+    var tempLat = e.suggestion['latlng'].lat;
 
-  $.ajax({
-    'url': '/api/apartments',
-    'method': 'GET',
-    'success': function(data) {
 
-      // for (const key in data) {
-      //   var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
-      //   console.log(data[key]);
-        // showRadius(dist, 50);
-      // }
-      console.log(data);
-      $('.apartment-card').each(function(){
-          var lat = $(this).find('.latitude').text();
-          var long = $(this).find('.longitude').text();
-          // console.log(lat);
-          var dist = distance(tempLat, tempLong, lat, long,'K');
-          var radius = 40;
-          if (dist > radius) {
+    $('.apartment-card').each(function(){
+        var lat = $(this).find('.latitude').text();
+        var long = $(this).find('.longitude').text();
+        // console.log(lat);
+        var dist = distance(tempLat, tempLong, lat, long,'K');
+        var radius = 40;
+        if (dist > radius) {
             $(this).hide();
-          }
-      });
-    }
-  });
-
+        }
+    });
 });
 
 $('.form-check-input').click(function(){
@@ -55,12 +42,14 @@ $('.form-check-input').click(function(){
             // console.log(data);
             $('.apartment-card').each(function(){
                 var idApt = $(this).find('.id').text();
+
                 var serviceCheck = false;
                 for (var key in data) {
                     if (data[key].apartment_id == idApt && data[key].service_id == selectedService) {
                         serviceCheck = true;
                     }
                 }
+
                 if (!serviceCheck) {
                     $(this).hide();
                 }

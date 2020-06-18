@@ -37250,34 +37250,22 @@ var placesAutocomplete = places({
 // placesAutocomplete.on('change', e => $('#longitude').val(e.suggestion['latlng'].lng));
 
 placesAutocomplete.on('change', function (e) {
+  $('.apartment-card').show();
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
   var tempLong = e.suggestion['latlng'].lng;
-  var tempLat = e.suggestion['latlng'].lat; // console.log(tempLong, tempLat);
+  var tempLat = e.suggestion['latlng'].lat;
+  $('.apartment-card').each(function () {
+    var lat = $(this).find('.latitude').text();
 
-  $.ajax({
-    'url': '/api/apartments',
-    'method': 'GET',
-    'success': function success(data) {
-      // for (const key in data) {
-      //   var dist = distance(tempLat, tempLong, data[key]['latitude'], data[key]['longitude'],'K');
-      //   console.log(data[key]);
-      // showRadius(dist, 50);
-      // }
-      console.log(data);
-      $('.apartment-card').each(function () {
-        var lat = $(this).find('.latitude').text();
-
-        var _long = $(this).find('.longitude').text(); // console.log(lat);
+    var _long = $(this).find('.longitude').text(); // console.log(lat);
 
 
-        var dist = distance(tempLat, tempLong, lat, _long, 'K');
-        var radius = 40;
+    var dist = distance(tempLat, tempLong, lat, _long, 'K');
+    var radius = 40;
 
-        if (dist > radius) {
-          $(this).hide();
-        }
-      });
+    if (dist > radius) {
+      $(this).hide();
     }
   });
 });
@@ -37423,8 +37411,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Boolean/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

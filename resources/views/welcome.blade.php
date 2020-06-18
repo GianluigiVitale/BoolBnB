@@ -13,9 +13,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">Appartamento {{$apartment->title}}</h5>
                                 <p class="card-text">Descrizione appartamento {{$apartment->id}}</p>
-                                <p class="latitude invisible">{{$apartment->latitude}}</p>
-                                <p class="longitude invisible">{{$apartment->longitude}}</p>
-                                <p class="id invisible">{{$apartment->id}}</p>
+                            </div>
+                            <div class="content invisible">
+                                <p class="latitude">{{$apartment->latitude}}</p>
+                                <p class="longitude">{{$apartment->longitude}}</p>
+                                <p class="id">{{$apartment->id}}</p>
                             </div>
                         </div>
                    @endforeach
