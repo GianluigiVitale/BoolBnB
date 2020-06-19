@@ -7,6 +7,7 @@
        @include('partials.main')
        <div class="container">
            <div class="row">
+               <div class="apartments">
                    @foreach ($apartments as $apartment)
                        <div class="card apartment-card" style="width: 18rem;">
                             <img class="card-img-top" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
@@ -18,11 +19,13 @@
                                 <p class="latitude">{{$apartment->latitude}}</p>
                                 <p class="longitude">{{$apartment->longitude}}</p>
                                 <p class="id">{{$apartment->id}}</p>
+                                <p class="distance"></p>
                                 <p class="number_rooms">{{$apartment->number_rooms}}</p>
                                 <p class="number_beds">{{$apartment->number_beds}}</p>
                             </div>
                         </div>
                    @endforeach
+                </div>
            </div>
        </div>
        @include('partials.footer')
