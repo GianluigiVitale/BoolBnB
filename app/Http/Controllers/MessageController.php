@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Apartment;
-use App\Service;
-use App\User;
-use Illuminate\Support\Facades\DB;
+use App\Message;
 
 
-class ApartmentController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,17 +17,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
-        return view('welcome', compact('apartments'));
+        //
     }
-
-    public function indexPublished()
-    {
-        $apartments = Apartment::where('published', 1)->get();
-        $services = Service::all();
-        return view('welcome', compact('apartments', 'services'));
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +38,28 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'email' => 'required|email|max:50',
+            'message' => 'required|string|min:1'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $message_user = new Message;
+        $message_user->fill($data);
+
+        $saved = $message_user->save();
+        if (!$saved) {
+            abort('404');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -60,23 +70,8 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        $apartment = Apartment::findOrFail($id);
-        $user_logged = Auth::id();
-
-        $user_email = DB::table('users')->where('id', $user_logged)->pluck('email')->first();
-
-        if ($apartment->published == 0) {
-            abort('404');
-        } else {
-            return view('apartment', compact('apartment', 'user_email'));
-        }
+        //
     }
-
-    // public function showPublished($id)
-    // {
-    //     $apartments = Apartment::where('published', 1)->get();
-    //     return view('apartment', compact('apartments'));
-    // }
 
     /**
      * Show the form for editing the specified resource.

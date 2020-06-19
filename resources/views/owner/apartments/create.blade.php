@@ -12,7 +12,7 @@
                         <input type="text" name="title" class="form-control" value="{{old('title')}}">
                     </div>
                     @error('title')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <label for="address">Address</label>
@@ -22,7 +22,7 @@
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
                     @error('latitude')
-                    <div class="alert alert-danger">Invalid address</div>
+                        <div class="alert alert-danger">Invalid address</div>
                     @enderror
 
                     <div class="form-group">
@@ -30,7 +30,7 @@
                         <input type="number" name="number_rooms" class="form-control" value="{{old('number_rooms')}}">
                     </div>
                     @error('number_rooms')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <div class="form-group">
@@ -38,7 +38,7 @@
                         <input type="number" name="number_beds" class="form-control" value="{{old('number_beds')}}">
                     </div>
                     @error('number_beds')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <div class="form-group">
@@ -46,7 +46,7 @@
                         <input type="number" name="number_bathrooms" class="form-control" value="{{old('number_bathrooms')}}">
                     </div>
                     @error('number_bathrooms')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <div class="form-group">
@@ -54,7 +54,7 @@
                         <input type="number" name="sqmt" class="form-control" value="{{old('sqmt')}}">
                     </div>
                     @error('sqmt')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
 
@@ -62,12 +62,12 @@
                     <div class="form-group">
                         <h4>Services</h4>
                         @foreach ($services as $key => $service)
-                        <label for="services-{{$service->id}}">{{$service->service_name}}</label>
-                        <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
+                            <label for="services-{{$service->id}}">{{$service->service_name}}</label>
+                            <input type="checkbox" name="services[]" id="services-{{$service->id}}" value="{{$service->id}}" {{(is_array(old('services')) && in_array($service->id, old('services'))) ? 'checked' : ''}}>
                         @endforeach
                     </div>
                     @error('services')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <div>
@@ -86,7 +86,7 @@
                         </div>
                     {{-- </form> --}}
                     @error('image')
-                    <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
                     <input type="submit" value="Salva" class="btn btn-primary">

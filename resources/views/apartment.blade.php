@@ -24,6 +24,34 @@
         @endif
             <iframe  width="100%" height="500" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <form action="{{route('messages.store')}}" method="post">
+                            @csrf
+                            @method('POST')
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="form-control" value="{{(!empty($user_email)) ? $user_email : old('email')}}">
+                            </div>
+                            @error('email')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <input type="text" name="message" class="form-control" value="{{old('message')}}">
+                            </div>
+                            @error('message')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                            <input type="text" name="apartment_id" value="{{$apartment->id}}" style="display: none">
+                            <input type="submit" value="Salva" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
        @include('partials.footer')
 
 @endsection
