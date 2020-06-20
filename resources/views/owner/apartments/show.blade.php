@@ -37,12 +37,30 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div id="dropin-container"></div>
-                <button id="submit-button">Verifica metodo di pagamento</button>
+            <div class="col-12">
+                <form action="{{route('owner.apartments.sponsorship')}}" method="post">
+                    @csrf
+                    @method('POST')
+                    <input type="text" name="apartment_id" value="{{$apartment->id}}" style="display: none">
+                    <div class="form-group">
+                        @foreach ($packages as $package)
+                            <div class="form-check">
+                                <input name="package_id" type="radio" value="{{$package->id}}" checked>
+                                <label for="package_id">Sponsorizza per {{$package->sponsorship_cost}}€ - {{$package->sponsorship_duration}} ore</label>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="form-group">
+                        <div id="dropin-container"></div>
+                        <button id="submit-button">Verifica metodo di pagamento</button>
+                    </div>
+                </form>
             </div>
         </div>
-   </div>
+    </div>
+
+
     <script>
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
@@ -54,7 +72,6 @@
                     $.get('{{route('payments.process')}}', {payload}, function (response) {
                         if (response.success) {
                             alert('Payment successfull');
-                            console.log('ciaooo');
                         } else {
                             alert('Payment failed');
                         }

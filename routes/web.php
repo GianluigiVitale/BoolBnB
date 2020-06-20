@@ -26,16 +26,13 @@ Route::prefix('owner')
 ->middleware('auth')
 ->group(function(){
     Route::get('/', 'UserController@index')->name('index');
+    Route::post('apartments/sponsorship', 'ApartmentController@sponsorship')->name('apartments.sponsorship');
     Route::resource('apartments', 'ApartmentController');
 });
-
 
 // Rotta d'entrata in cui ricercare un appartamento
 Route::get('/', 'ApartmentController@indexPublished')->name('welcome');
 Route::get('/{id}', 'ApartmentController@show')->name('apartment');
-
-
-Route::resource('apartment/messages', 'MessageController');
 
 
 
