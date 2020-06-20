@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/payments/process', 'PaymentsController@process')->name('payments.process');
 
 Auth::routes();
 //rotte dell'admin
