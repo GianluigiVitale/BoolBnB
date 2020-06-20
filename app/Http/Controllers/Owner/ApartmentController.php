@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
+use App\Package;
+use App\Sponsorship;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class ApartmentController extends Controller
@@ -22,6 +26,7 @@ class ApartmentController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where('user_id', $userId)->get();
+
 
         return view('owner.apartments.index', compact('apartments'));
     }
@@ -93,8 +98,9 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
-        
-        return view('owner.apartments.show', compact('apartment'));
+        $packages = Package::all();
+
+        return view('owner.apartments.show', compact('apartment', 'packages'));
     }
 
     /**
@@ -187,5 +193,43 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()->back();
+    }
+
+    public function sponsorship(Request $request)
+    {
+        $data = $request->all();
+        $sponsor_duration = DB::table('packages')->where('id', $data['package_id'])->pluck('sponsorship_duration')->first();
+
+
+        if (!isset($data['package_id'])) {
+            return redirect()->back();
+        }
+
+        $endDate = Carbon::now('Europe/Rome')->locale('it')->addHours($sponsor_duration)->format('Y-m-d, H:m:s');
+
+        $check = DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->pluck('apartment_id')->first();
+
+        if ($check !== null) {
+            $existing_end_date = DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->pluck('sponsor_end')->first();
+            // dd($existing_end_date);
+
+            $new_end_date = Carbon::createFromDate($existing_end_date)->addHours($sponsor_duration);
+
+            DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->update(array('sponsor_end' => $new_end_date));
+
+            return redirect()->route('welcome');
+        }
+
+        $data['sponsor_end'] = $endDate;
+
+        $sponsor = new Sponsorship;
+        $sponsor->fill($data);
+
+        $saved = $sponsor->save();
+        if (!$saved) {
+            abort('404');
+        }
+
+        return redirect()->route('welcome');
     }
 }
