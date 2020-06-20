@@ -10,7 +10,6 @@
                 <h2>{{$apartment->title}}</h2>
                 <small>Last Modified: {{$apartment->updated_at}}</small>
 
-                {{-- @dd($page->tags->count()) --}}
                 @if($apartment->services->count() > 0)
                     <div>
                         <h4>Services</h4>
