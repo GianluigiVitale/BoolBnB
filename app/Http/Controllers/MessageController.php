@@ -46,7 +46,7 @@ class MessageController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()
+            return redirect()->back()->with('failure', 'Message was not send.')
             ->withErrors($validator)
             ->withInput();
         }
@@ -59,7 +59,7 @@ class MessageController extends Controller
             abort('404');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Message sent.');
     }
 
     /**

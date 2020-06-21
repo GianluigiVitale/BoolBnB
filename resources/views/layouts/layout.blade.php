@@ -12,6 +12,16 @@
 <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 </head>
 <body>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            {{$message}}
+        </div>
+    @endif
+    @if ($message = Session::get('failure'))
+        <div class="alert alert-danger">
+            {{$message}}
+        </div>
+    @endif
 @yield('body')
 </body>
 @yield('script')
