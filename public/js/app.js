@@ -37281,44 +37281,6 @@ placesAutocomplete.on('change', function (e) {
     }
   });
 });
-$('.form-check-input').click(function () {
-  // var selectedService = $(this).val();
-  $.ajax({
-    'url': '/api/apartments',
-    'method': 'GET',
-    'success': function success(data) {
-      // console.log(data);
-      $('.apartment-card').each(function () {
-        var aptCard = $(this);
-        var idApt = $(this).find('.id').text();
-        $('.form-check-input').each(function () {
-          var serviceId = $(this).val();
-
-          if (!aptCard.hasClass('invisible')) {
-            if ($(this).is(':checked')) {
-              // console.log(prova + ' si');
-              var serviceCheck = false;
-
-              for (var key in data) {
-                if (data[key].apartment_id == idApt && data[key].service_id == serviceId) {
-                  serviceCheck = true;
-                }
-              }
-
-              if (!serviceCheck) {
-                // console.log('hide');
-                aptCard.hide();
-              }
-            } else {
-              // console.log('show');
-              aptCard.show();
-            }
-          }
-        });
-      });
-    }
-  });
-});
 
 function distance(lat1, lon1, lat2, lon2, unit) {
   if (lat1 == lat2 && lon1 == lon2) {
@@ -37350,7 +37312,48 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   }
 }
 
-; //DATEPICKER
+;
+$('.form-check-input').click(function () {
+  $.ajax({
+    'url': '/api/apartments',
+    'method': 'GET',
+    'success': function success(data) {
+      var listck = [];
+      $('.form-check-input').each(function () {
+        var serviceId = $(this).val();
+
+        if ($(this).is(':checked')) {
+          listck.push(parseInt(serviceId));
+        }
+      });
+      $('.apartment-card').each(function () {
+        var aptCard = $(this);
+        var idApt = $(this).find('.id').text();
+        var list_serv = [];
+
+        for (var key in data) {
+          if (data[key].apartment_id == parseInt(idApt)) {
+            list_serv.push(parseInt(data[key].service_id));
+          }
+        }
+
+        var serviceCheck = true;
+
+        for (var key in listck) {
+          if (!list_serv.includes(parseInt(listck[key]))) {
+            serviceCheck = false;
+          }
+        }
+
+        if (serviceCheck == false) {
+          aptCard.hide();
+        } else {
+          aptCard.show();
+        }
+      });
+    }
+  });
+}); //DATEPICKER
 
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");
 
@@ -37437,8 +37440,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
