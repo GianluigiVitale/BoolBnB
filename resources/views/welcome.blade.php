@@ -7,8 +7,39 @@
        @include('partials.main')
        <div class="container">
            <div class="row">
-                   @foreach ($apartments as $apartment)
-                       <div class="card apartment-card" style="width: 18rem;">
+                <h2>Featured apartments</h2>
+                @foreach ($sponsorships as $sponsor)
+                    @foreach ($apartments as $apartment)
+                        @if ($apartment->id == $sponsor->apartment_id)
+                            @php
+                                date_default_timezone_set("Europe/Rome");
+                                $today = date("Y-m-d H:i:s");
+                            @endphp
+                            @if ($sponsor->sponsor_end > $today)
+                                <div class="card apartment-card" style="width: 18rem;">
+                                    <a href="{{route('apartment', $apartment->id)}}" style="color: black">
+                                        <img class="card-img-top" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Appartamento {{$apartment->title}}</h5>
+                                            <p class="card-text">Descrizione appartamento {{$apartment->id}}</p>
+                                        </div>
+                                        <div class="content invisible">
+                                            <p class="latitude">{{$apartment->latitude}}</p>
+                                            <p class="longitude">{{$apartment->longitude}}</p>
+                                            <p class="id">{{$apartment->id}}</p>
+                                            <p class="number_rooms">{{$apartment->number_rooms}}</p>
+                                            <p class="number_beds">{{$apartment->number_beds}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        @endif
+                    @endforeach
+                @endforeach
+                <h2>Appartamenti</h2>
+                @foreach ($apartments as $apartment)
+                    <div class="card apartment-card" style="width: 18rem;">
+                        <a href="{{route('apartment', $apartment->id)}}" style="color: black">
                             <img class="card-img-top" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
                             <div class="card-body">
                                 <h5 class="card-title">Appartamento {{$apartment->title}}</h5>
@@ -21,8 +52,9 @@
                                 <p class="number_rooms">{{$apartment->number_rooms}}</p>
                                 <p class="number_beds">{{$apartment->number_beds}}</p>
                             </div>
-                        </div>
-                   @endforeach
+                        </a>
+                    </div>
+                @endforeach
            </div>
        </div>
        @include('partials.footer')
