@@ -28,8 +28,10 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::where('published', 1)->get();
         $services = Service::all();
+        $sponsorships = Sponsorship::all();
 
-        return view('welcome', compact('apartments', 'services'));
+        // dd($sponsorships);
+        return view('welcome', compact('apartments', 'services', 'sponsorships'));
     }
 
 
