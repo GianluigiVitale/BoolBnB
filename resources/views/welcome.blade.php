@@ -7,7 +7,7 @@
        @include('partials.main')
        <div class="container">
            <div class="row">
-                <h2>Appartamenti In Evidenza</h2>
+                <h2>Featured apartments</h2>
                 @foreach ($sponsorships as $sponsor)
                     @foreach ($apartments as $apartment)
                         @if ($apartment->id == $sponsor->apartment_id)
