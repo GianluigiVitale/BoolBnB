@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Service;
 use App\User;
+use App\Sponsorship;
 use Illuminate\Support\Facades\DB;
 
 
@@ -27,6 +28,7 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::where('published', 1)->get();
         $services = Service::all();
+
         return view('welcome', compact('apartments', 'services'));
     }
 

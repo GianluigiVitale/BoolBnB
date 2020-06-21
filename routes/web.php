@@ -30,6 +30,8 @@ Route::prefix('owner')
     Route::resource('apartments', 'ApartmentController');
 });
 
+Route::resource('messages', 'MessageController');
+
 // Rotta d'entrata in cui ricercare un appartamento
 Route::get('/', 'ApartmentController@indexPublished')->name('welcome');
 Route::get('/{id}', 'ApartmentController@show')->name('apartment');

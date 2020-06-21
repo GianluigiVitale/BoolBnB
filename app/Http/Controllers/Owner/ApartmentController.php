@@ -69,7 +69,7 @@ class ApartmentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('owner.apartments.create')
+            return redirect()->route('owner.apartments.create')->with('failure', 'Apartment not added.')
             ->withErrors($validator)
             ->withInput();
         }
@@ -86,7 +86,7 @@ class ApartmentController extends Controller
         // dd($apartment);
         // return view('welcome');
 
-        return redirect()->route('owner.apartments.show', $apartment->id);
+        return redirect()->route('owner.apartments.show', $apartment->id)->with('success', 'Apartment Added.');
     }
 
     /**
@@ -153,7 +153,7 @@ class ApartmentController extends Controller
         ]);
 
         if ($validator->fails() || empty($data['services'])) {
-            return redirect()->back()
+            return redirect()->back()->with('failure', 'Apartment not added.')
             ->withErrors($validator)
             ->withInput();
         }
@@ -163,14 +163,14 @@ class ApartmentController extends Controller
 
         $updated = $apartment->update();
         if (!$updated) {
-            return redirect()->back();
+            return redirect()->back()->with('failure', 'Apartment not added.');
         }
 
         $apartment->services()->sync($data['services']);
         // dd($apartment);
         // return view('welcome');
 
-        return redirect()->route('owner.apartments.show', $apartment->id);
+        return redirect()->route('owner.apartments.show', $apartment->id)->with('success', 'Apartment Added.');;
     }
 
     /**
@@ -192,7 +192,7 @@ class ApartmentController extends Controller
         $apartment->services()->detach();
         $apartment->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Aparment Deleted.');
     }
 
     public function sponsorship(Request $request)
@@ -202,7 +202,7 @@ class ApartmentController extends Controller
 
 
         if (!isset($data['package_id'])) {
-            return redirect()->back();
+            return redirect()->back()->with('failure', 'Package not selected.');
         }
 
         $endDate = Carbon::now('Europe/Rome')->locale('it')->addHours($sponsor_duration)->format('Y-m-d, H:m:s');
@@ -217,7 +217,7 @@ class ApartmentController extends Controller
 
             DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->update(array('sponsor_end' => $new_end_date));
 
-            return redirect()->route('welcome');
+            return redirect()->route('welcome')->with('success', 'Apartment sponsored.');
         }
 
         $data['sponsor_end'] = $endDate;
@@ -230,6 +230,6 @@ class ApartmentController extends Controller
             abort('404');
         }
 
-        return redirect()->route('welcome');
+        return redirect()->route('welcome')->with('success', 'Apartment sponsored.');
     }
 }
