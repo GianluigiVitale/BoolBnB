@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container kp--cta">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-xs-12 col-md-8 col-lg-8">
+            {{-- <div class="card"> --}}
                 <form class="" action="{{route('owner.apartments.update', $apartment->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
+                        <h4>Apartment info</h4>
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control" value="{{$apartment->title}}">
                     </div>
@@ -24,41 +25,43 @@
                     @error('latitude')
                     <div class="alert alert-danger">Invalid address</div>
                     @enderror
+                    <div class="kp--nr-forms kp--form-group">
+                        <div class="form-group kp--form-group">
+                            <label for="number_rooms">Number of rooms</label>
+                            <input type="number" name="number_rooms" class="form-control" value="{{$apartment->number_rooms}}">
+                        </div>
+                        @error('number_rooms')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
 
-                    <div class="form-group">
-                        <label for="number_rooms">Number of rooms</label>
-                        <input type="number" name="number_rooms" class="form-control" value="{{$apartment->number_rooms}}">
+                        <div class="form-group kp--form-group">
+                            <label for="number_beds">Number of beds</label>
+                            <input type="number" name="number_beds" class="form-control" value="{{$apartment->number_beds}}">
+                        </div>
+                        @error('number_beds')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+
+                        <div class="form-group kp--form-group">
+                            <label for="number_bathrooms">Number of bathrooms</label>
+                            <input type="number" name="number_bathrooms" class="form-control" value="{{$apartment->number_bathrooms}}">
+                        </div>
+                        @error('number_bathrooms')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+
+                        <div class="form-group kp--form-group">
+                            <label for="sqmt">Square meters</label>
+                            <input type="number" name="sqmt" class="form-control" value="{{$apartment->sqmt}}">
+                        </div>
+                        @error('sqmt')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                     </div>
-                    @error('number_rooms')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-
-                    <div class="form-group">
-                        <label for="number_beds">Number of beds</label>
-                        <input type="number" name="number_beds" class="form-control" value="{{$apartment->number_beds}}">
-                    </div>
-                    @error('number_beds')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-
-                    <div class="form-group">
-                        <label for="number_bathrooms">Number of bathrooms</label>
-                        <input type="number" name="number_bathrooms" class="form-control" value="{{$apartment->number_bathrooms}}">
-                    </div>
-                    @error('number_bathrooms')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-
-                    <div class="form-group">
-                        <label for="sqmt">Square meters</label>
-                        <input type="number" name="sqmt" class="form-control" value="{{$apartment->sqmt}}">
-                    </div>
-                    @error('sqmt')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
 
 
-                    <div class="form-group">
+
+                    <div class="form-group kp--services">
                         <h4>Services</h4>
                         @foreach($services as $service)
                             <input id="services-{{$service->id}}" type="checkbox" name="services[]" value="{{$service->id}}"
@@ -94,13 +97,13 @@
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
 
-                    <input type="submit" value="Salva" class="btn btn-primary">
+                    <input type="submit" value="Salva" class="btn btn-primary kp--btn">
                 </form>
 
 
 
 
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
 </div>

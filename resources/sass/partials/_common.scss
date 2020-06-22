@@ -57,3 +57,11 @@ a {
     display: none;
 }
 //Fine classi per javascript
+
+body .kp--btn {
+    background-image: -webkit-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    background-image: -o-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    background-color: white;
+    border: none;
+}
