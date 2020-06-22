@@ -9,8 +9,10 @@
             <div class="col-12">
                 <h1>{{$apartment->title}}</h1>
                 <div class="gv-content">
-                    <img class="img-fluid col-md-6" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
-                    <iframe class="col-md-6" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
+                    <div class="div-img">
+                        <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
+                    </div>
+                        <iframe src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
                 </div>
                 <p>{{$apartment->number_rooms}} rooms • {{$apartment->number_beds}} bedrooms • {{$apartment->number_bathrooms}} bathrooms • {{$apartment->sqmt}} sqmt</p>
                 @if($apartment->services->count() > 0)

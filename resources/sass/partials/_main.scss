@@ -27,7 +27,7 @@
 
 .kp--cta {
     h4 {
-        color: rgb(255, 56, 92);
+        color: $airbnb_color;
     }
 }
 
@@ -49,6 +49,13 @@
     // label:first-child {
     //     margin-left: 0;
     // }
+}
+
+#gv-image {
+    padding-top: 15px;
+    font-size: 24px;
+    font-weight: 500;
+    color: $airbnb_color;
 }
 
 .ap-icon-clear {
