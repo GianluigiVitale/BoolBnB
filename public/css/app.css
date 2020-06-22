@@ -11496,6 +11496,59 @@ a {
 
 /* FOOTER */
 
+/* SHOW */
+
+.gv-show {
+  padding-top: 40px;
+}
+
+.gv-show h1 {
+  font-size: 35px;
+  color: #ff385c;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.gv-show p {
+  font-size: 18px;
+}
+
+.gv-content {
+  display: flex;
+  padding: 40px 0;
+}
+
+.gv-infoapartment {
+  padding-bottom: 75px;
+}
+
+.gv-infoapartment h4 {
+  font-size: 26px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  color: #ff385c;
+}
+
+.gv-infoapartment span {
+  text-transform: capitalize;
+}
+
+.gv-infoapartment span:last-child {
+  display: none;
+}
+
+.gv-message-section {
+  padding-bottom: 50px;
+}
+
+.gv-message-section h4 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  color: #ff385c;
+}
+
 @media screen and (max-width: 1200px) {
   .wl-nav {
     display: none;

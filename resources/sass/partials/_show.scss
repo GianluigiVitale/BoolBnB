@@ -1,0 +1,50 @@
+.gv-show {
+    padding-top: 40px;
+
+    h1 {
+        font-size: 35px;
+        color: rgb(255, 56, 92);
+        text-transform: uppercase;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+.gv-content {
+    display: flex;
+    padding: 40px 0;
+}
+
+.gv-infoapartment {
+    padding-bottom: 75px;
+
+    h4 {
+        font-size: 26px;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+        color: rgb(255, 56, 92);
+    }
+
+    span {
+        text-transform: capitalize;
+
+        &:last-child {
+            display: none;
+        }
+    }
+}
+
+.gv-message-section {
+    padding-bottom: 50px;
+
+    h4 {
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+        color: rgb(255, 56, 92);
+    }
+}
