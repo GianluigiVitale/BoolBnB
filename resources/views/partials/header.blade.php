@@ -1,6 +1,21 @@
 <header id="myHeader">
-       <div class="container-fluid wl-header clearfix">
-              <div class="container-2">
+       <div class="container-fluid clearfix">
+              <nav class="navbar navbar-expand-lg">
+                     <a class="navbar-brand" href="#">BoolBnB</a>
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse justify-content-end"  id="navbarNavAltMarkup">
+                       <div class="navbar-nav">
+                         <a class="nav-item nav-link" href="#">Host Your Home <span class="sr-only">(current)</span></a>
+                         @guest
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link kb--btn" href="{{ route('register') }}">{{ __('Register') }}</a>
+                         @endguest
+                       </div>
+                     </div>
+                   </nav>
+              {{-- <div class="container-2">
                      <div class="row wl-header-row">
                             <div class="col-xl-2 col-lg-12 wl-logo">
                                    <div class="wl-logo-header flex-center">
@@ -40,18 +55,7 @@
                                           @endguest
                                    </div>
                             </div>
-
-                            <div class="col-xl-3 wl-searchbar">
-                                   <div class="wl-searchbar-header flex-center">
-                                          <form class="clearfix searchform">
-                                                 <input type="search" id="search-box" placeholder="" />
-                                                 <label for="search-box">
-                                                        <span class="icon- fa fa-search fa-horizontal"></span>
-                                                 </label>
-                                          </form>
-                                   </div>
-                            </div>
                      </div>
-              </div>
+              </div> --}}
        </div>
 </header>

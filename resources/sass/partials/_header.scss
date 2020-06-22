@@ -1,87 +1,91 @@
-.wl-header {
-       .container-2 {
-              height: 57px;
-       }
-       font-family: 'Montserrat-Bold';
-       letter-spacing: 2px;
-       position: sticky;
-       z-index: 2;
-       font-size: 1.5em;
-       height: 57px;
-       transition: all 1s ease;
-       background-color: white;
-       .wl-header-row {
-              height: 100%;
-              .wl-logo {
-                     background-color: $sisal_color;
-                     height: 100%;
-                     .wl-logo-header {
-                            .fa-bars {
-                                   display: none;
-                            }
-                            justify-content: flex-start;
-                            #logo {
-                                   color: white;
-                                   text-transform: uppercase;
-                            }
+.navbar-brand {
+       color: $airbnb_color;
+   }
 
-                     }
+// .wl-header {
+//        .container-2 {
+//               height: 57px;
+//        }
+//        font-family: 'Montserrat-Bold';
+//        letter-spacing: 2px;
+//        position: sticky;
+//        z-index: 2;
+//        font-size: 1.5em;
+//        height: 57px;
+//        transition: all 1s ease;
+//        background-color: white;
+//        .wl-header-row {
+//               height: 100%;
+//               .wl-logo {
+//                      background-color: $sisal_color;
+//                      height: 100%;
+//                      .wl-logo-header {
+//                             .fa-bars {
+//                                    display: none;
+//                             }
+//                             justify-content: flex-start;
+//                             #logo {
+//                                    color: white;
+//                                    text-transform: uppercase;
+//                             }
 
-              }
-              .wl-nav {
-                     background-color: white;
-                     height: 100%;
-                     .wl-nav-header {
-                            justify-content: space-between;
-                            font-family: 'Montserrat';
-                            letter-spacing: 1px;
-                            font-size: 0.7rem;
-                            margin: 0 10px 0 40px;
-                            a {
-                                   color: black;
-                                   &:hover {
-                                          color: $sisal_color;
-                                   }
-                            }
-                     }
-              }
-              .wl-searchbar {
-                     background-color: white;
-                     height: 100%;
-                     .wl-searchbar-header {
-                            justify-content: flex-end;
-                            .searchform {
-                                   margin: 0;
-                                   & label,
-                                   & input {
-                                   color: black;
-                                   }
-                                   & label {
-                                          margin: 0px 5px 0 0;
-                                   }
-                                   & input[type=search] {
-                                          font: 0.7rem Montserrat;
-                                          border: 0.1rem solid black;
-                                          border-width: 0 0 0.1rem;
-                                          background-color: transparent;
-                                          width: 50%;
-                                          position: relative;
-                                          bottom: 5px;
-                                   }
-                                   & input[type=search]:focus {
-                                          border-color: black;
-                                          color: black;
-                                          outline: 0;
-                                          position: relative;
-                                          bottom: 5px;
-                                   }
-                                   .fa-horizontal {
-                                          font-size: 0.7rem;
-                                   }
-                            }
-                     }
-              }
-       }
+//                      }
+
+//               }
+//               .wl-nav {
+//                      background-color: white;
+//                      height: 100%;
+//                      .wl-nav-header {
+//                             justify-content: space-between;
+//                             font-family: 'Montserrat';
+//                             letter-spacing: 1px;
+//                             font-size: 0.7rem;
+//                             margin: 0 10px 0 40px;
+//                             a {
+//                                    color: black;
+//                                    &:hover {
+//                                           color: $sisal_color;
+//                                    }
+//                             }
+//                      }
+//               }
+//               .wl-searchbar {
+//                      background-color: white;
+//                      height: 100%;
+//                      .wl-searchbar-header {
+//                             justify-content: flex-end;
+//                             .searchform {
+//                                    margin: 0;
+//                                    & label,
+//                                    & input {
+//                                    color: black;
+//                                    }
+//                                    & label {
+//                                           margin: 0px 5px 0 0;
+//                                    }
+//                                    & input[type=search] {
+//                                           font: 0.7rem Montserrat;
+//                                           border: 0.1rem solid black;
+//                                           border-width: 0 0 0.1rem;
+//                                           background-color: transparent;
+//                                           width: 50%;
+//                                           position: relative;
+//                                           bottom: 5px;
+//                                    }
+//                                    & input[type=search]:focus {
+//                                           border-color: black;
+//                                           color: black;
+//                                           outline: 0;
+//                                           position: relative;
+//                                           bottom: 5px;
+//                                    }
+//                                    .fa-horizontal {
+//                                           font-size: 0.7rem;
+//                                    }
+//                             }
+//                      }
+//               }
+//        }
 
 
-}
+// }
