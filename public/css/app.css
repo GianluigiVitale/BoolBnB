@@ -11478,6 +11478,7 @@ body .kp--btn {
 .gv-content {
   display: flex;
   padding: 40px 0;
+  height: 400px;
 }
 
 .gv-infoapartment {
@@ -11505,6 +11506,25 @@ body .kp--btn {
 }
 
 .gv-message-section h4 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  color: #ff385c;
+}
+
+.gv-messages,
+.gv-sponsorship {
+  padding-bottom: 75px;
+}
+
+.gv-messages h3,
+.gv-sponsorship h3 {
+  font-size: 22px;
+}
+
+.gv-messages h4,
+.gv-sponsorship h4 {
+  font-size: 26px;
+  padding-top: 50px;
   padding-bottom: 20px;
   border-bottom: 1px solid lightgray;
   color: #ff385c;

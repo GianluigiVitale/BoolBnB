@@ -3,7 +3,7 @@
 
     h1 {
         font-size: 35px;
-        color: rgb(255, 56, 92);
+        color: $airbnb_color;
         text-transform: uppercase;
         padding-bottom: 20px;
         border-bottom: 1px solid lightgray;
@@ -17,6 +17,8 @@
 .gv-content {
     display: flex;
     padding: 40px 0;
+
+    height: 400px;
 }
 
 .gv-infoapartment {
@@ -27,7 +29,7 @@
         padding-top: 50px;
         padding-bottom: 20px;
         border-bottom: 1px solid lightgray;
-        color: rgb(255, 56, 92);
+        color: $airbnb_color;
     }
 
     span {
@@ -45,6 +47,22 @@
     h4 {
         padding-bottom: 20px;
         border-bottom: 1px solid lightgray;
-        color: rgb(255, 56, 92);
+        color: $airbnb_color;
+    }
+}
+
+.gv-messages, .gv-sponsorship {
+    padding-bottom: 75px;
+
+    h3 {
+        font-size: 22px;
+    }
+
+    h4 {
+        font-size: 26px;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+        color: $airbnb_color;
     }
 }

@@ -4,40 +4,45 @@
 
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div class="container gv-show">
+        <div class="row justify-content-center">
             <div class="col-12">
-                <h2>{{$apartment->title}}</h2>
-                <small>Last Modified: {{$apartment->updated_at}}</small>
-
+                <h1>{{$apartment->title}}</h1>
+                <div class="gv-content">
+                    <img class="img-fluid col-md-6" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
+                    <iframe class="col-md-6" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
+                </div>
+                <p>{{$apartment->number_rooms}} rooms • {{$apartment->number_beds}} bedrooms • {{$apartment->number_bathrooms}} bathrooms • {{$apartment->sqmt}} sqmt</p>
                 @if($apartment->services->count() > 0)
-                    <div>
+                    <div class="gv-infoapartment">
                         <h4>Services</h4>
-                        <ul>
-                            @foreach ($apartment->services as $service)
-                                <li>{{$service->service_name}}</li>
-                            @endforeach
-                        </ul>
+                        @foreach ($apartment->services as $service)
+                            <span>{{$service->service_name}}</span>
+                            <span>•</span>
+                        @endforeach
                     </div>
                 @endif
-
-                <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
             </div>
-            <div class="col-12">
-                <h2>Received Messages</h2>
-                @foreach ($apartment->messages as $message)
-                    <div class="message">
-                        <h3>{{$message->email}}</h3>
-                        <p>{{$message->message}}</p>
-                    </div>
-                @endforeach
+            <div class="col-12 gv-messages">
+                <h4>Received Messages</h4>
+                <ul>
+                    @foreach ($apartment->messages as $message)
+                        <li>
+                            <div class="message">
+                                <h3>{{$message->email}}</h3>
+                                <p>{{$message->message}}</p>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 gv-sponsorship">
+                <h4>Sponsor Your Apartment</h4>
                 <form action="{{route('owner.apartments.sponsorship')}}" method="post">
                     @csrf
                     @method('POST')
@@ -53,7 +58,7 @@
 
                     <div class="form-group">
                         <div id="dropin-container"></div>
-                        <button id="submit-button">Verifica metodo di pagamento</button>
+                        <button class="btn btn-primary kp--btn" id="submit-button">Verifica metodo di pagamento</button>
                     </div>
                 </form>
             </div>
