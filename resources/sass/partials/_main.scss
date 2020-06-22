@@ -81,6 +81,12 @@
               }
        }
 }
+
+.card-header {
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+    color: white;
+}
+
 @media screen and (max-width: 399px) {
     .kp--nr-forms {
         .kp--form-group {
@@ -88,6 +94,8 @@
         }
     }
 }
+
+
 @media screen and (min-width: 1200px) {
     .kp--nr-forms {
         .kp--form-group {
