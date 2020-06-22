@@ -13,15 +13,15 @@
                         <h1>{{$apartment->title}}</h1>
                         <div class="gv-content">
                             <img class="img-fluid col-md-6" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
-                            <iframe class="col-md-6" width="100%" height="500" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
+                            <iframe class="col-md-6" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
                         </div>
                         <p>{{$apartment->number_rooms}} rooms • {{$apartment->number_beds}} bedrooms • {{$apartment->number_bathrooms}} bathrooms • {{$apartment->sqmt}} sqmt</p>
                         <div class="gv-infoapartment">
-                          <h4>Services</h4>
-                          @foreach ($apartment->services as $service)
-                            <span>{{$service->service_name}}</span>
-                            <span>•</span>
-                          @endforeach
+                            <h4>Services</h4>
+                            @foreach ($apartment->services as $service)
+                                <span>{{$service->service_name}}</span>
+                                <span>•</span>
+                            @endforeach
                         </div>
                     @endif
                 </div>
