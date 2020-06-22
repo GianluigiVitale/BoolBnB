@@ -1,7 +1,12 @@
 @extends('layouts.app')
+@section('title')
+    Register | BoolBnB
+@endsection
 @section('styles')
 
 @endsection
+
+@include('partials.header')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

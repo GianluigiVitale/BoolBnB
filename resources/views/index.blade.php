@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('titolo')
+@section('title')
     HomePage | BoolBnB
 @endsection
 

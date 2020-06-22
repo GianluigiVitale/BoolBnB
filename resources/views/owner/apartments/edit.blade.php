@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('title')
+    Edit an apartment | BoolBnB
+@endsection
+@include('partials.header')
 @section('content')
 <div class="container kp--cta">
     <div class="row justify-content-center">

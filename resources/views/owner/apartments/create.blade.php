@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('title')
+    Create an apartment | BoolBnB
+@endsection
+@include('partials.header')
 @section('content')
 <div class="container kp--cta">
     <div class="row justify-content-center">
@@ -18,7 +22,7 @@
 
                     <label for="address">Address</label>
                     <div>
-                        <input type="search" id="address-input" class="form-control" placeholder="Address"/>
+                        <input type="search" id="address-input create-input" class="form-control" placeholder="Address"/>
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
@@ -98,5 +102,4 @@
         </div>
     </div>
 </div>
-<script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 @endsection

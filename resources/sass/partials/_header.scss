@@ -1,6 +1,44 @@
-.navbar-brand {
-       color: $airbnb_color;
-   }
+header {
+    .container-fullwidth {
+        background-image: -webkit-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+        background-image: -o-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+        background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+        .navbar-brand {
+            color: white;
+            font-size: 30px;
+            line-height: 50px;
+            margin-left: 25px;
+        }
+        .kp--bg {
+            background-image: -webkit-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+            background-image: -o-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+            background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+        }
+        .nav-item {
+            a {
+                color: white;
+            }
+        }
+        .nav-link {
+            color: white;
+        }
+
+        .dropdown-item:hover {
+            background-image: -webkit-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+            background-image: -o-linear-gradient(left, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+            background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+        }
+
+        .header-pos {
+            margin-left: auto;
+        }
+
+        .nav-item {
+            padding: 0 15px;
+        }
+    }
+
+}
 
 // .wl-header {
 //        .container-2 {

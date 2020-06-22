@@ -1,9 +1,13 @@
 @php
     use Illuminate\Support\Facades\Storage;
 @endphp
-
 @extends('layouts.app')
+@section('title')
+    {{$apartment->title}}
+@endsection
+@include('partials.header')
 @section('content')
+
     <div class="container gv-show">
         <div class="row justify-content-center">
             <div class="col-12">
@@ -12,7 +16,7 @@
                     <div class="div-img">
                         <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
                     </div>
-                        <iframe src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
+                    <iframe src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
                 </div>
                 <p>{{$apartment->number_rooms}} rooms • {{$apartment->number_beds}} bedrooms • {{$apartment->number_bathrooms}} bathrooms • {{$apartment->sqmt}} sqmt</p>
                 @if($apartment->services->count() > 0)
@@ -28,14 +32,23 @@
             <div class="col-12 gv-messages">
                 <h4>Received Messages</h4>
                 <ul>
-                    @foreach ($apartment->messages as $message)
+                    @if (!empty($apartment->messages))
+                        @foreach ($apartment->messages as $message)
+                            <li>
+                                <div class="message">
+                                    <h3>{{$message->email}}</h3>
+                                    <p>{{$message->message}}</p>
+                                </div>
+                            </li>
+                        @endforeach
+                    @else
                         <li>
                             <div class="message">
-                                <h3>{{$message->email}}</h3>
-                                <p>{{$message->message}}</p>
+                                <h3>No messages to show</h3>
                             </div>
                         </li>
-                    @endforeach
+                    @endif
+
                 </ul>
             </div>
         </div>

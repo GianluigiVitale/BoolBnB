@@ -52,7 +52,7 @@ placesAutocomplete.on('change', function(e) {
     //Begin sort by distance
     var cont = $(".apartments");
     var arr = $.makeArray(cont.children(".apartment-card"));
-    
+
 
     arr.sort(function(a, b) {
       var textA = +$(a).find('.distance').text();
@@ -63,13 +63,13 @@ placesAutocomplete.on('change', function(e) {
 
       return 0;
     });
-    
+
 
     cont.empty();
 
     $.each(arr, function() {
         cont.append(this);
-        
+
     });
     //End sort by distance
 

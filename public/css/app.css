@@ -11351,8 +11351,39 @@ body .kp--btn {
 
 /* HEADER */
 
-.navbar-brand {
-  color: #ff385c;
+header .container-fullwidth {
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+}
+
+header .container-fullwidth .navbar-brand {
+  color: white;
+  font-size: 30px;
+  line-height: 50px;
+  margin-left: 25px;
+}
+
+header .container-fullwidth .kp--bg {
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+}
+
+header .container-fullwidth .nav-item a {
+  color: white;
+}
+
+header .container-fullwidth .nav-link {
+  color: white;
+}
+
+header .container-fullwidth .dropdown-item:hover {
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+}
+
+header .container-fullwidth .header-pos {
+  margin-left: auto;
+}
+
+header .container-fullwidth .nav-item {
+  padding: 0 15px;
 }
 
 /* MAIN */
@@ -11385,6 +11416,11 @@ body .kp--btn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: center;
+}
+
+.kp--form-small {
+  width: 30%;
 }
 
 .kp--cta h4 {
@@ -11409,6 +11445,10 @@ body .kp--btn {
 
 .kp--services label {
   padding-right: 3px;
+}
+
+#create-input {
+  width: 100%;
 }
 
 #gv-image {
@@ -11446,8 +11486,39 @@ body .kp--btn {
   padding-bottom: 20px;
 }
 
+.bb-jumbo .bb-jumbo-main label {
+  color: white;
+}
+
 .bb-jumbo .bb-jumbo-main #service-list {
   padding-left: 50px;
+}
+
+.row h2 {
+  color: #ff385c;
+  margin: 2.5rem 0;
+}
+
+.apartments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.apartments .apartment-card {
+  margin: 0 25px 25px 0;
+}
+
+.card-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.card-btns a {
+  margin-right: 10px;
 }
 
 .card-header {

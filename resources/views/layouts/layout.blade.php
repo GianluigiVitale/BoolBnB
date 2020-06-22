@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>@yield('titolo')</title>
+<title>@yield('title')</title>
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
@@ -23,7 +23,7 @@
         </div>
     @endif
 @yield('body')
+    <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/4aa4c430a6.js" crossorigin="anonymous"></script>
 </body>
-@yield('script')
-{{-- scripts --}}
 </html>
