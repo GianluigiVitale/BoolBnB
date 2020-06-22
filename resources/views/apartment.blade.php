@@ -6,28 +6,32 @@
 @section('body')
        @include('partials.header')
 
-        @if ($apartment->published == 1)
-            <h1>Title: {{$apartment->title}}</h1>
-            <img class="img-fluid" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
-            <div>
-              <h4>Services</h4>
-              <ul>
-              @foreach ($apartment->services as $service)
-                <li>{{$service->service_name}}</li>
-              @endforeach
-              </ul>
+        <div class="container gv-show">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    @if ($apartment->published == 1)
+                        <h1>{{$apartment->title}}</h1>
+                        <div class="gv-content">
+                            <img class="img-fluid col-md-6" src="{{asset('storage/'. $apartment->image)}}" alt="{{$apartment->title}}">
+                            <iframe class="col-md-6" width="100%" height="500" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
+                        </div>
+                        <p>{{$apartment->number_rooms}} rooms • {{$apartment->number_beds}} bedrooms • {{$apartment->number_bathrooms}} bathrooms • {{$apartment->sqmt}} sqmt</p>
+                        <div class="gv-infoapartment">
+                          <h4>Services</h4>
+                          @foreach ($apartment->services as $service)
+                            <span>{{$service->service_name}}</span>
+                            <span>•</span>
+                          @endforeach
+                        </div>
+                    @endif
+                </div>
             </div>
-            <h4>Number of rooms: {{$apartment->number_rooms}}</h4>
-            <h4>Number of beds: {{$apartment->number_beds}}</h4>
-            <h4>Number of bathrooms: {{$apartment->number_bathrooms}}</h4>
-            <h4>Sqmt: {{$apartment->sqmt}}</h4>
-        @endif
-            <iframe  width="100%" height="500" src="https://maps.google.com/maps?q={{$apartment->latitude}},{{$apartment->longitude}}&output=embed"></iframe>
-
+        </div>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
+                <div class="col-md-12 gv-message-section">
+                    <h4>Send a Message to the Owner</h4>
+                    {{-- <div class="card"> --}}
                         <form action="{{route('messages.store')}}" method="post">
                             @csrf
                             @method('POST')
@@ -40,15 +44,15 @@
                             @enderror
                             <div class="form-group">
                                 <label for="message">Message</label>
-                                <input type="text" name="message" class="form-control" value="{{old('message')}}">
+                                <textarea class="form-control" name="message" rows="8" cols="80">{{old('message')}}</textarea>
                             </div>
                             @error('message')
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                             <input type="text" name="apartment_id" value="{{$apartment->id}}" style="display: none">
-                            <input type="submit" value="Salva" class="btn btn-primary">
+                            <input type="submit" value="Invia" class="btn btn-primary kp--btn">
                         </form>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
