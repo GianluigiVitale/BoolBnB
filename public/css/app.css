@@ -11411,6 +11411,13 @@ body .kp--btn {
   padding-right: 3px;
 }
 
+#gv-image {
+  padding-top: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ff385c;
+}
+
 .ap-icon-clear {
   display: none;
 }
@@ -11484,6 +11491,15 @@ body .kp--btn {
   display: flex;
   padding: 40px 0;
   height: 400px;
+}
+
+.gv-content .div-img img {
+  height: 100%;
+}
+
+.gv-content iframe {
+  margin-left: 5px;
+  width: 100%;
 }
 
 .gv-infoapartment {

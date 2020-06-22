@@ -19,6 +19,17 @@
     padding: 40px 0;
 
     height: 400px;
+
+    .div-img {
+        img {
+            height: 100%;
+        }
+    }
+
+    iframe {
+        margin-left: 5px;
+        width: 100%;
+    }
 }
 
 .gv-infoapartment {

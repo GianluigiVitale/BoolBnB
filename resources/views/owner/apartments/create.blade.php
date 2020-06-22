@@ -18,7 +18,7 @@
 
                     <label for="address">Address</label>
                     <div>
-                        <input type="search" id="address-input" class="form-control" placeholder="Address" />
+                        <input type="search" id="address-input" class="form-control" placeholder="Address"/>
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
@@ -84,7 +84,7 @@
                     {{-- <form action="/upload" method="post" enctype="multipart/form-data"> --}}
                         {{-- @csrf --}}
                         <div class="form-group">
-                            <label for="sqmt">Image</label>
+                            <label id="gv-image" for="sqmt">Image</label>
                             <input type="file" name="image" class="form-control" value="{{old('image')}}">
                         </div>
                     {{-- </form> --}}
@@ -98,4 +98,5 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 @endsection
