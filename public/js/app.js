@@ -37264,6 +37264,7 @@ placesAutocomplete.on('change', function (e) {
     var _long = $(this).find('.longitude').text();
 
     var dist = distance(tempLat, tempLong, lat, _long, 'K');
+    $(this).find('.distance').text(dist);
 
     if (dist > radius) {
       $(this).addClass('invisible');
@@ -37279,7 +37280,21 @@ placesAutocomplete.on('change', function (e) {
     if (aptBeds <= numBeds) {
       $(this).addClass('invisible');
     }
+  }); //Begin sort by distance
+
+  var cont = $(".apartments");
+  var arr = $.makeArray(cont.children(".apartment-card"));
+  arr.sort(function (a, b) {
+    var textA = +$(a).find('.distance').text();
+    var textB = +$(b).find('.distance').text();
+    if (textA > textB) return 1;
+    if (textA < textB) return -1;
+    return 0;
   });
+  cont.empty();
+  $.each(arr, function () {
+    cont.append(this);
+  }); //End sort by distance
 });
 
 function distance(lat1, lon1, lat2, lon2, unit) {
@@ -37440,8 +37455,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

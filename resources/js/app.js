@@ -33,6 +33,7 @@ placesAutocomplete.on('change', function(e) {
         var long = $(this).find('.longitude').text();
 
         var dist = distance(tempLat, tempLong, lat, long,'K');
+        $(this).find('.distance').text(dist);
         if (dist > radius) {
             $(this).addClass('invisible');
         }
@@ -47,6 +48,30 @@ placesAutocomplete.on('change', function(e) {
             $(this).addClass('invisible');
         }
     });
+
+    //Begin sort by distance
+    var cont = $(".apartments");
+    var arr = $.makeArray(cont.children(".apartment-card"));
+    
+
+    arr.sort(function(a, b) {
+      var textA = +$(a).find('.distance').text();
+      var textB = +$(b).find('.distance').text();
+
+      if (textA > textB) return 1;
+      if (textA < textB) return -1;
+
+      return 0;
+    });
+    
+
+    cont.empty();
+
+    $.each(arr, function() {
+        cont.append(this);
+        
+    });
+    //End sort by distance
 
 });
 
