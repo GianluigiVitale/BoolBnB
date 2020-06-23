@@ -21,7 +21,7 @@
                     @enderror
 
                     <label for="address">Address</label>
-                    <div>
+                    <div class="gv-address-input">
                         <input type="search" id="address-input" class="form-control" style="width: 100%" placeholder="Address"/>
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
@@ -88,8 +88,8 @@
                     {{-- <form action="/upload" method="post" enctype="multipart/form-data"> --}}
                         {{-- @csrf --}}
                         <div class="form-group">
-                            <label id="gv-image" for="sqmt">Image</label>
-                            <input type="file" name="image" class="form-control" value="{{old('image')}}">
+                            <label id="gv-image" for="image">Image</label>
+                            <input id="gv-input-image" type="file" name="image" class="form-control btn" value="{{old('image')}}">
                         </div>
                     {{-- </form> --}}
                     @error('image')

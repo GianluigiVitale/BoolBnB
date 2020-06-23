@@ -46,7 +46,7 @@
 .kp--services {
     margin-top: 15px;
     input {
-        margin-right: 6%;
+        margin-right: 5%;
     }
     label {
         padding-right: 3px;
@@ -55,7 +55,12 @@
     //     margin-left: 0;
     // }
 }
-.algolia-places {
+
+.service-list {
+    padding-left: 50px;
+}
+
+.gv-address-input .algolia-places {
     width: 100% !important;
 }
 
@@ -65,6 +70,11 @@
     font-size: 24px;
     font-weight: 500;
     color: $airbnb_color;
+}
+
+#gv-input-image {
+    padding-left: 0;
+    margin: 15px 0;
 }
 
 .ap-icon-clear {
@@ -97,12 +107,6 @@
         label {
             color: white;
         }
-
-        #service-list {
-            padding-left: 50px;
-        }
-
-
     }
 }
 
@@ -113,7 +117,7 @@
     }
 }
 
-.apartments {
+.apartments, .apartmentss {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -122,6 +126,10 @@
     .apartment-card {
         margin: 0 25px 25px 0;
     }
+}
+
+.apartments {
+    padding-bottom: 100px;
 }
 
 .card-btns {
@@ -133,6 +141,10 @@
     a {
         margin-right: 10px;
     }
+}
+
+.kp--card-header .card-title {
+    padding-top: 10px;
 }
 
 .card-header {
@@ -152,7 +164,7 @@
 @media screen and (min-width: 1200px) {
     .kp--nr-forms {
         .kp--form-group {
-            height: 80px;
+            height: 95px;
         }
     }
 }

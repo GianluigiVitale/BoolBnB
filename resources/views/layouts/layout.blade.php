@@ -12,16 +12,6 @@
 <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 </head>
 <body>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            {{$message}}
-        </div>
-    @endif
-    @if ($message = Session::get('failure'))
-        <div class="alert alert-danger">
-            {{$message}}
-        </div>
-    @endif
 @yield('body')
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
     <script src="https://kit.fontawesome.com/4aa4c430a6.js" crossorigin="anonymous"></script>

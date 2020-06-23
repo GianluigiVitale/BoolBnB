@@ -68,6 +68,7 @@
                     <div class="form-group kp--services">
                         <h4>Services</h4>
                         @foreach($services as $service)
+                            <label for="services-{{$service->id}}">{{$service->service_name}}</label>
                             <input id="services-{{$service->id}}" type="checkbox" name="services[]" value="{{$service->id}}"
                             @foreach ($apartment->services as $ap_service)
                                 @if ($service->id == $ap_service->id)
@@ -75,7 +76,6 @@
                                 @endif
                             @endforeach
                             >
-                            <label for="services-{{$service->id}}">{{$service->service_name}}</label>
                         @endforeach
                     </div>
 
@@ -93,8 +93,8 @@
                     {{-- <form action="/upload" method="post" enctype="multipart/form-data"> --}}
                         {{-- @csrf --}}
                         <div class="form-group">
-                            <label for="sqmt">Image</label>
-                            <input type="file" name="image" class="form-control" value="{{old('image')}}">
+                            <label id="gv-image" for="image">Image</label>
+                            <input id="gv-input-image" type="file" name="image" class="form-control btn" value="{{old('image')}}">
                         </div>
                     {{-- </form> --}}
                     @error('image')

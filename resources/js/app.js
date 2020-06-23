@@ -14,6 +14,7 @@ var placesAutocomplete = places({
 
 
 placesAutocomplete.on('change', function(e) {
+
     var radius = $('#radius').val();
     var numRooms = parseInt($('#number_rooms').val());
     var numBeds = parseInt($('#number_beds').val());

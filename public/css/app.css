@@ -11440,14 +11440,18 @@ header .container-fullwidth .nav-item {
 }
 
 .kp--services input {
-  margin-right: 6%;
+  margin-right: 5%;
 }
 
 .kp--services label {
   padding-right: 3px;
 }
 
-.algolia-places {
+.service-list {
+  padding-left: 50px;
+}
+
+.gv-address-input .algolia-places {
   width: 100% !important;
 }
 
@@ -11456,6 +11460,11 @@ header .container-fullwidth .nav-item {
   font-size: 24px;
   font-weight: 500;
   color: #ff385c;
+}
+
+#gv-input-image {
+  padding-left: 0;
+  margin: 15px 0;
 }
 
 .ap-icon-clear {
@@ -11490,24 +11499,26 @@ header .container-fullwidth .nav-item {
   color: white;
 }
 
-.bb-jumbo .bb-jumbo-main #service-list {
-  padding-left: 50px;
-}
-
 .row h2 {
   color: #ff385c;
   margin: 2.5rem 0;
 }
 
-.apartments {
+.apartments,
+.apartmentss {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.apartments .apartment-card {
+.apartments .apartment-card,
+.apartmentss .apartment-card {
   margin: 0 25px 25px 0;
+}
+
+.apartments {
+  padding-bottom: 100px;
 }
 
 .card-btns {
@@ -11519,6 +11530,10 @@ header .container-fullwidth .nav-item {
 
 .card-btns a {
   margin-right: 10px;
+}
+
+.kp--card-header .card-title {
+  padding-top: 10px;
 }
 
 .card-header {
@@ -11534,7 +11549,7 @@ header .container-fullwidth .nav-item {
 
 @media screen and (min-width: 1200px) {
   .kp--nr-forms .kp--form-group {
-    height: 80px;
+    height: 95px;
   }
 }
 
