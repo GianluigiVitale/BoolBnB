@@ -22,7 +22,7 @@
 
                     <label for="address">Address</label>
                     <div>
-                        <input type="search" id="address-input create-input" class="form-control" placeholder="Address"/>
+                        <input type="search" id="address-input" class="form-control create-input" placeholder="Address"/>
                         <input type="text" name="latitude" value="" id='latitude' style="display: none;">
                         <input type="text" name="longitude" value="" id='longitude' style="display: none;">
                     </div>
