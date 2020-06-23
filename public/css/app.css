@@ -11447,8 +11447,8 @@ header .container-fullwidth .nav-item {
   padding-right: 3px;
 }
 
-#create-input {
-  width: 100%;
+.algolia-places {
+  width: 100% !important;
 }
 
 #gv-image {
