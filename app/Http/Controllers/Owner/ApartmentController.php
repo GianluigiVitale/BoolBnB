@@ -170,7 +170,7 @@ class ApartmentController extends Controller
         // dd($apartment);
         // return view('welcome');
 
-        return redirect()->route('owner.apartments.show', $apartment->id)->with('success', 'Apartment Added.');;
+        return redirect()->route('owner.apartments.show', $apartment->id)->with('success', 'Apartment Edited.');;
     }
 
     /**

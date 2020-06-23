@@ -46,3 +46,15 @@
         </nav>
     </div>
 </header>
+<div class="container-fullwidth clearfix">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" style="margin-bottom: 0">
+            {{$message}}
+        </div>
+    @endif
+    @if ($message = Session::get('failure'))
+        <div class="alert alert-danger" style="margin-bottom: 0">
+            {{$message}}
+        </div>
+    @endif
+</div>

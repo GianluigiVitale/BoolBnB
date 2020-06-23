@@ -32,7 +32,7 @@
             <div class="col-12 gv-messages">
                 <h4>Received Messages</h4>
                 <ul>
-                    @if (!empty($apartment->messages))
+                    @if (count($apartment->messages) > 0)
                         @foreach ($apartment->messages as $message)
                             <li>
                                 <div class="message">
@@ -42,11 +42,9 @@
                             </li>
                         @endforeach
                     @else
-                        <li>
-                            <div class="message">
-                                <h3>No messages to show</h3>
-                            </div>
-                        </li>
+                        <div class="message">
+                            <p>No messages to show</p>
+                        </div>
                     @endif
 
                 </ul>

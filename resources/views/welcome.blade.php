@@ -9,8 +9,19 @@
        <div class="container">
            <div class="row">
                 <div class="col-12 text-center">
-                    <h2>Featured apartments</h2>
-                    <div class="apartments">
+                    <h2>Filter By Services</h2>
+                    <div class="bb-flex">
+                        @foreach ($services as $service)
+                        <div class="service-list" class="form-check ">
+                           <input class="form-check-input " type="checkbox" value="{{$service->id}}" id="defaultCheck1">
+                           <label class="form-check-label " for="defaultCheck1">{{$service->service_name}}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                    @if (count($sponsorships) > 0)
+                        <h2>Featured apartments</h2>
+                    @endif
+                    <div class="apartmentss">
                         @foreach ($sponsorships as $sponsor)
                             @foreach ($apartments as $apartment)
                                 @if ($apartment->id == $sponsor->apartment_id)
@@ -40,10 +51,12 @@
                         @endforeach
                     </div>
                 </div>
-                </div>
+            </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2>Appartamenti</h2>
+                    @if (count($apartments) > 0)
+                        <h2>Appartamenti</h2>
+                    @endif
                     <div class="apartments">
                         @foreach ($apartments as $apartment)
                             <div class="card text-center apartment-card" style="width: 18rem;">
@@ -65,7 +78,6 @@
                         @endforeach
                     </div>
                 </div>
-
             </div>
        </div>
        @include('partials.footer')
