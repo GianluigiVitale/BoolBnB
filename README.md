@@ -33,6 +33,11 @@ DB_PORT=3306
 DB_DATABASE=database_name
 DB_USERNAME=your_user
 DB_PASSWORD=your_password
+
+BRAINTREE_ENV=sandbox
+BRAINTREE_MERCHANT_ID=your_id
+BRAINTREE_PUBLIC_KEY=your_public_key
+BRAINTREE_PRIVATE_KEY=your_private_key
 ```
 
 Generate your key:
@@ -44,5 +49,11 @@ $ php artisan key:generate
 Run the migrations
 
 ```sh
-$ php artisan migrate:refresh
+$ php artisan migrate
+```
+
+Run the seeder
+
+```sh
+$ php artisan db:seed
 ```
