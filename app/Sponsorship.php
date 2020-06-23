@@ -16,4 +16,9 @@ class Sponsorship extends Model
     {
         return $this->hasMany('App\Package');
     }
+
+    public function apartments()
+    {
+        return $this->hasMany('App\Apartment');
+    }
 }

@@ -52,7 +52,7 @@
                                 <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                             <input type="text" name="apartment_id" value="{{$apartment->id}}" style="display: none">
-                            <input type="submit" value="Invia" class="btn btn-primary kp--btn">
+                            <input type="submit" value="Send Message" class="btn btn-primary kp--btn">
                         </form>
                     {{-- </div> --}}
                 </div>
