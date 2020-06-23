@@ -1,13 +1,12 @@
 # BoolBnB
 
-Realization of a complex Web application inspired by Airbnb, formed by Backend (Multi-auth Users and Roles, Payment Provider Integration and Geolocation API) and responsive Frontend interface.
+BoolBnB is an application to find and manage apartment rentals. Users who want to rent an apartment once registered can create an ad. Users interested in an apartment, using the filters of a search page, see a list of possible apartments and by clicking on each one it's possible to see a detailed page. The user can contact the owner to ask questions. In addition, the owners of an apartment can pay to sponsor the ad of an apartment to make it more visible.
 
-## Project Link
+## Short video of the project
 
-https://docs.google.com/document/d/1e-d1SooTchMUuL8FEYiv51h47b56uHwEs68NH1EeIEc
+[BoolBnb Video](video/boolbnb.mp4)
 
-## TEAM
-### Class 10 - Group 3
+### TEAM
 
 - Federico Bartoli
 - Michael Hernandez
