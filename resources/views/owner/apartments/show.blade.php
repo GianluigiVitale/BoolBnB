@@ -64,14 +64,14 @@
                         @foreach ($packages as $package)
                             <div class="form-check">
                                 <input name="package_id" type="radio" value="{{$package->id}}" checked>
-                                <label for="package_id">Sponsorizza per {{$package->sponsorship_cost}}€ - {{$package->sponsorship_duration}} ore</label>
+                                <label for="package_id">Sponsor for {{$package->sponsorship_cost}}€ - {{$package->sponsorship_duration}} hours</label>
                             </div>
                         @endforeach
                     </div>
 
                     <div class="form-group">
                         <div id="dropin-container"></div>
-                        <button class="btn btn-primary kp--btn" id="submit-button">Verifica metodo di pagamento</button>
+                        <button class="btn btn-primary kp--btn" id="submit-button">Check payment method</button>
                     </div>
                 </form>
             </div>

@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     @if (count($apartments) > 0)
-                        <h2>Appartamenti</h2>
+                        <h2>Apartments</h2>
                     @endif
                     <div class="apartments">
                         @foreach ($apartments as $apartment)

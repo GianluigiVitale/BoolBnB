@@ -189,7 +189,9 @@ class ApartmentController extends Controller
         }
 
         //se abbiamo many to many dobbiamo cancellare record in tabella ponte
+        $apartment->messages()->delete();
         $apartment->services()->detach();
+        DB::table('sponsorships')->where('apartment_id', $apartment->id)->delete();
         $apartment->delete();
 
         return redirect()->back()->with('success', 'Aparment Deleted.');
