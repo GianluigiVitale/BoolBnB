@@ -46,7 +46,7 @@ placesAutocomplete.on('change', function(e) {
             $(this).hide();
         }
         if (aptBeds <= numBeds) {
-            $(this).show();
+            $(this).hide();
         }
     });
 

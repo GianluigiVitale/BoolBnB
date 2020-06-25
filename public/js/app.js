@@ -37278,7 +37278,7 @@ placesAutocomplete.on('change', function (e) {
     }
 
     if (aptBeds <= numBeds) {
-      $(this).show();
+      $(this).hide();
     }
   }); //Begin sort by distance
 
