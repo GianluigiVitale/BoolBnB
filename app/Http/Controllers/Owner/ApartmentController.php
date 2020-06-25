@@ -213,12 +213,14 @@ class ApartmentController extends Controller
 
         if ($check !== null) {
             $existing_end_date = DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->pluck('sponsor_end')->first();
-            // dd($existing_end_date);
+            
+            if ($existing_end_date < Carbon::now('Europe/Rome')->locale('it')->format('Y-m-d, H:m:s')) {
+                DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->update(array('sponsor_end' => $endDate));
+            } else {
+                $new_end_date = Carbon::createFromDate($existing_end_date)->addHours($sponsor_duration);
 
-            $new_end_date = Carbon::createFromDate($existing_end_date)->addHours($sponsor_duration);
-
-            DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->update(array('sponsor_end' => $new_end_date));
-
+                DB::table('sponsorships')->where('apartment_id', $data['apartment_id'])->update(array('sponsor_end' => $new_end_date));
+            }
             return redirect()->route('welcome')->with('success', 'Apartment sponsored.');
         }
 

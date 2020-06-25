@@ -29,11 +29,11 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12 gv-message-section">
-                    <h4>Send a Message to the Owner</h4>
-                    {{-- <div class="card"> --}}
+        @if ($user_logged != $apartment->user_id)
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 gv-message-section">
+                        <h4>Send a Message to the Owner</h4>
                         <form action="{{route('messages.store')}}" method="post">
                             @csrf
                             @method('POST')
@@ -54,10 +54,11 @@
                             <input type="text" name="apartment_id" value="{{$apartment->id}}" style="display: none">
                             <input type="submit" value="Send Message" class="btn btn-primary kp--btn">
                         </form>
-                    {{-- </div> --}}
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
+
        @include('partials.footer')
 
 @endsection

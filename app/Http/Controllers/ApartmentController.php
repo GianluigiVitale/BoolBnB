@@ -72,7 +72,7 @@ class ApartmentController extends Controller
         if ($apartment->published == 0) {
             abort('404');
         } else {
-            return view('apartment', compact('apartment', 'user_email'));
+            return view('apartment', compact('apartment', 'user_email', 'user_logged'));
         }
     }
 

@@ -19,7 +19,8 @@
                         @endforeach
                     </div>
                     @if (count($sponsorships) > 0)
-                        <h2 class="featured">Featured apartments</h2>
+                        <h2>Featured apartments</h2>
+                        <p class="featured" style="display: none">No apartments found.</p>
                     @endif
                     <div class="apartmentss">
                         @foreach ($sponsorships as $sponsor)
@@ -55,7 +56,8 @@
             <div class="row">
                 <div class="col-12 text-center">
                     @if (count($apartments) > 0)
-                        <h2 id="cards-name">Apartments</h2>
+                        <h2>Apartments</h2>
+                        <p id="cards-name" style="display: none">No apartments found.</p>
                     @endif
                     <div class="apartments">
                         @foreach ($apartments as $apartment)
