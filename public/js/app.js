@@ -37368,6 +37368,43 @@ $('.form-check-input').click(function () {
       });
     }
   });
+  var countInvisible = 0;
+  var countApt = 0;
+  $('.apartmentss .apartment-card').each(function () {
+    countApt += 1; // const element = document.querySelector('.apartmentss .apartment-card')
+    // const style = getComputedStyle(element)
+
+    if ($(this).is(':hidden') == true) {
+      countInvisible += 1;
+    }
+  });
+  console.log('sopra inv' + countInvisible);
+  console.log('sopra vis' + countApt);
+
+  if (countApt == countInvisible) {
+    $('.featured').hide();
+  } else {
+    $('.featured').show();
+  }
+
+  var countInvisible2 = 0;
+  var countApt2 = 0;
+  $('.apartments .apartment-card').each(function () {
+    countApt2 += 1; // const element = document.querySelector('.apartmentss .apartment-card')
+    // const style = getComputedStyle(element)
+
+    if ($(this).is(':hidden') == true) {
+      countInvisible2 += 1;
+    }
+  });
+  console.log('sotto inv' + countInvisible2);
+  console.log('sotto vis' + countApt2);
+
+  if (countApt2 == countInvisible2) {
+    $('#cards-name').hide();
+  } else {
+    $('#cards-name').show();
+  }
 }); //DATEPICKER
 
 var datepicker = __webpack_require__(/*! js-datepicker */ "./node_modules/js-datepicker/dist/datepicker.min.js");

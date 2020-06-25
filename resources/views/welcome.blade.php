@@ -13,13 +13,13 @@
                     <div class="bb-flex">
                         @foreach ($services as $service)
                         <div class="service-list" class="form-check ">
-                           <input class="form-check-input " type="checkbox" value="{{$service->id}}" id="defaultCheck1">
+                           <input class="form-check-input " type="checkbox" value="{{$service->id}}" autocomplete="off" id="defaultCheck1">
                            <label class="form-check-label " for="defaultCheck1">{{$service->service_name}}</label>
                         </div>
                         @endforeach
                     </div>
                     @if (count($sponsorships) > 0)
-                        <h2>Featured apartments</h2>
+                        <h2 class="featured">Featured apartments</h2>
                     @endif
                     <div class="apartmentss">
                         @foreach ($sponsorships as $sponsor)
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     @if (count($apartments) > 0)
-                        <h2>Apartments</h2>
+                        <h2 id="cards-name">Apartments</h2>
                     @endif
                     <div class="apartments">
                         @foreach ($apartments as $apartment)
