@@ -20,7 +20,18 @@ placesAutocomplete.on('change', function(e) {
     var numBeds = parseInt($('#number_beds').val());
 
 
-    $('.apartment-card').show();
+    
+
+    var counter = 0
+    $('.form-check-input').each(function() {
+        if ($(this).is(':checked')){
+            counter++;
+        }
+    });
+
+    if(counter == 0) {
+        $('.apartment-card').show();
+    }
 
     $('#longitude').val(e.suggestion['latlng'].lng);
     $('#latitude').val(e.suggestion['latlng'].lat);

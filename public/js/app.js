@@ -37253,7 +37253,17 @@ placesAutocomplete.on('change', function (e) {
   var radius = $('#radius').val();
   var numRooms = parseInt($('#number_rooms').val());
   var numBeds = parseInt($('#number_beds').val());
-  $('.apartment-card').show();
+  var counter = 0;
+  $('.form-check-input').each(function () {
+    if ($(this).is(':checked')) {
+      counter++;
+    }
+  });
+
+  if (counter == 0) {
+    $('.apartment-card').show();
+  }
+
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
   var tempLong = e.suggestion['latlng'].lng;
@@ -37480,8 +37490,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Laravel/BoolBnB/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
