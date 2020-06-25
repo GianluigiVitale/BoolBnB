@@ -37253,7 +37253,7 @@ placesAutocomplete.on('change', function (e) {
   var radius = $('#radius').val();
   var numRooms = parseInt($('#number_rooms').val());
   var numBeds = parseInt($('#number_beds').val());
-  $('.apartment-card').removeClass('invisible');
+  $('.apartment-card').show();
   $('#longitude').val(e.suggestion['latlng'].lng);
   $('#latitude').val(e.suggestion['latlng'].lat);
   var tempLong = e.suggestion['latlng'].lng;
@@ -37267,18 +37267,18 @@ placesAutocomplete.on('change', function (e) {
     $(this).find('.distance').text(dist);
 
     if (dist > radius) {
-      $(this).addClass('invisible');
+      $(this).hide();
     }
 
     var aptRooms = parseInt($(this).find('.number_rooms').text());
     var aptBeds = parseInt($(this).find('.number_beds').text());
 
     if (aptRooms <= numRooms) {
-      $(this).addClass('invisible');
+      $(this).hide();
     }
 
     if (aptBeds <= numBeds) {
-      $(this).addClass('invisible');
+      $(this).show();
     }
   }); //Begin sort by distance
 
@@ -37455,8 +37455,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\PHPEserciziPomeriggio\BoolBnB\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Boolean\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

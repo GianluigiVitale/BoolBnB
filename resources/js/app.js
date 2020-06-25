@@ -20,7 +20,7 @@ placesAutocomplete.on('change', function(e) {
     var numBeds = parseInt($('#number_beds').val());
 
 
-    $('.apartment-card').removeClass('invisible');
+    $('.apartment-card').show();
 
     $('#longitude').val(e.suggestion['latlng'].lng);
     $('#latitude').val(e.suggestion['latlng'].lat);
@@ -36,17 +36,17 @@ placesAutocomplete.on('change', function(e) {
         var dist = distance(tempLat, tempLong, lat, long,'K');
         $(this).find('.distance').text(dist);
         if (dist > radius) {
-            $(this).addClass('invisible');
+            $(this).hide();
         }
 
         var aptRooms = parseInt($(this).find('.number_rooms').text());
         var aptBeds = parseInt($(this).find('.number_beds').text());
 
         if (aptRooms <= numRooms) {
-            $(this).addClass('invisible');
+            $(this).hide();
         }
         if (aptBeds <= numBeds) {
-            $(this).addClass('invisible');
+            $(this).show();
         }
     });
 
