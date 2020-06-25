@@ -13,8 +13,8 @@
                     <div class="bb-flex">
                         @foreach ($services as $service)
                         <div class="service-list" class="form-check ">
-                           <input class="form-check-input " type="checkbox" value="{{$service->id}}" autocomplete="off" id="defaultCheck1">
-                           <label class="form-check-label " for="defaultCheck1">{{$service->service_name}}</label>
+                           <input class="form-check-input " type="checkbox" value="{{$service->id}}" autocomplete="off" id="{{$service->service_name}}">
+                           <label class="form-check-label " for="{{$service->service_name}}">{{$service->service_name}}</label>
                         </div>
                         @endforeach
                     </div>

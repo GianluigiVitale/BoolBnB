@@ -78,9 +78,6 @@ placesAutocomplete.on('change', function(e) {
     apartmentCheck('.apartments .apartment-card', '#cards-name');
 });
 
-
-
-
 $('.form-check-input').click(function() {
     $.ajax({
         'url': '/api/apartments',
