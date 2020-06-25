@@ -42,10 +42,10 @@ placesAutocomplete.on('change', function(e) {
         var aptRooms = parseInt($(this).find('.number_rooms').text());
         var aptBeds = parseInt($(this).find('.number_beds').text());
 
-        if (aptRooms <= numRooms) {
+        if (aptRooms < numRooms) {
             $(this).hide();
         }
-        if (aptBeds <= numBeds) {
+        if (aptBeds < numBeds) {
             $(this).hide();
         }
     });
@@ -74,30 +74,12 @@ placesAutocomplete.on('change', function(e) {
     });
     //End sort by distance
 
+    apartmentCheck('.apartmentss .apartment-card', '.featured');
+    apartmentCheck('.apartments .apartment-card', '#cards-name');
 });
 
 
-function distance(lat1, lon1, lat2, lon2, unit) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		if (unit=="K") { dist = dist * 1.609344 }
-		if (unit=="N") { dist = dist * 0.8684 }
-		return dist;
-	}
-};
+
 
 $('.form-check-input').click(function() {
     $.ajax({
@@ -132,34 +114,57 @@ $('.form-check-input').click(function() {
                     aptCard.show();
                 }
             });
-            var countInvisible = 0;
-            var countApt = 0;
-            $('.apartmentss .apartment-card').each(function() {
-                countApt += 1;
-                if ($(this).is(':hidden') === true) {
-                    countInvisible += 1;
-                }
-            });            if (parseInt(countApt) == parseInt(countInvisible)) {
-                $('.featured').hide();
-            } else {
-                $('.featured').show();
-            }            var countInvisible2 = 0;
-            var countApt2 = 0;
-            $('.apartments .apartment-card').each(function() {
-                countApt2 += 1;                if ($(this).is(':hidden') == true) {
-                    countInvisible2 += 1;
-                }
-            });            if (countApt2 == countInvisible2) {
-                $('#cards-name').hide();
-            } else {
-                $('#cards-name').show();
-            }
+
+            apartmentCheck('.apartmentss .apartment-card', '.featured');
+            apartmentCheck('.apartments .apartment-card', '#cards-name');
         }
     });
 
 });
 
 
+//  FUNCTIONS
+
+
+function apartmentCheck(nameAptLoop, selectorToShow) {         // checks if there are no apartments available for a desired search
+    var countInvisible = 0;
+    var countApt = 0;
+
+    $(nameAptLoop).each(function() {
+        countApt += 1;
+        if ($(this).is(':hidden') == true) {
+            countInvisible += 1;
+        }
+    });
+
+    if (countApt == countInvisible) {
+        $(selectorToShow).show();
+    } else {
+        $(selectorToShow).hide();
+    }
+}
+
+function distance(lat1, lon1, lat2, lon2, unit) {       // calculates the distance between two coordinates
+	if ((lat1 == lat2) && (lon1 == lon2)) {
+		return 0;
+	}
+	else {
+		var radlat1 = Math.PI * lat1/180;
+		var radlat2 = Math.PI * lat2/180;
+		var theta = lon1-lon2;
+		var radtheta = Math.PI * theta/180;
+		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		if (dist > 1) {
+			dist = 1;
+		}
+		dist = Math.acos(dist);
+		dist = dist * 180/Math.PI;
+		dist = dist * 60 * 1.1515;
+		if (unit=="K") { dist = dist * 1.609344 }
+		if (unit=="N") { dist = dist * 0.8684 }
+		return dist;
+	}
+};
 
 //DATEPICKER
 const datepicker = require('js-datepicker');
